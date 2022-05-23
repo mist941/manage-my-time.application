@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "manage-my-time.app",
-    "slug": "manage-my-time.app",
+    "name": "manage-my-time.application",
+    "slug": "manage-my-time.application",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
