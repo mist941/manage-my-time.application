@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "manage-my-time.application",
-    "slug": "manage-my-time.application",
+    "name": "manage-my-time",
+    "slug": "manage-my-time",
+    "owner": "ivanstatkevich",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,6 +22,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "host.expo.exponent",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

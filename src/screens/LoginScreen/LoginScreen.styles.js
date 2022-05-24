@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-export const LoginStyles = StyleSheet.create({
+export const LoginScreenStyles = StyleSheet.create({
   wrapper: {
     flex: 1,
     height: '100%',
