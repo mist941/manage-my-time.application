@@ -8,13 +8,23 @@ const Stack = createNativeStackNavigator();
 
 const Router = () => {
   const {currentUser} = useContext(AuthContext);
-  console.log(currentUser);
+
+  let routes = [
+    <Stack.Screen name="Login" component={LoginScreen} options={{
+      headerShown: false
+    }}/>
+  ];
+
+  if (currentUser) routes = [
+    <Stack.Screen name="Login" component={LoginScreen} options={{
+      headerShown: false
+    }}/>
+  ];
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Login" component={LoginScreen} options={{
-          headerShown: false
-        }}/>
+        {routes}
       </Stack.Navigator>
     </NavigationContainer>
   );
