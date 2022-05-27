@@ -2,14 +2,15 @@ import React, {useContext, useEffect} from 'react';
 import CustomButton from '../CustomButton/CustomButton'
 import {View, Text} from 'react-native'
 import {LoginButtonsGroupStyles} from './LoginButtonsGroup.styles';
-import Divider from "../Divider/Divider";
-import {Asset} from "expo-asset";
-import {useTranslation} from "react-i18next";
-import {AuthContext} from "../../contexts/AuthContext";
+import Divider from '../Divider/Divider';
+import {Asset} from 'expo-asset';
+import {useTranslation} from 'react-i18next';
+import {AuthContext} from '../../contexts/AuthContext';
+import {generateUniqueId} from '../../helpers/generateUniqueId';
 
 const LoginButtonsGroup = () => {
   const {t} = useTranslation();
-  const {promptAsync, response, putUser} = useContext(AuthContext);
+  const {promptAsync, response, signIn} = useContext(AuthContext);
 
   useEffect(() => {
     if (response?.type === "success") {
@@ -24,14 +25,20 @@ const LoginButtonsGroup = () => {
 
     userInfoResponse.json().then(data => {
       const {email, id} = data;
-      putUser({email, id});
+      signIn({email, id});
     });
+  }
+
+  const standAloneSignIn = () => {
+    signIn({stand_alone_key: generateUniqueId()});
   }
 
   return (
     <View style={LoginButtonsGroupStyles.btnGroup}>
-      <CustomButton text={t('without-register-btn')} onPress={() => {
-      }}/>
+      <CustomButton
+        text={t('without-register-btn')}
+        onPress={standAloneSignIn}
+      />
       <View style={LoginButtonsGroupStyles.dividerGroup}>
         <Divider height={1}/>
         <Text style={LoginButtonsGroupStyles.text}>
@@ -43,7 +50,8 @@ const LoginButtonsGroup = () => {
         text={t('sign-in-with-google')}
         type='secondary'
         iconUri={Asset.fromModule(require('../../../assets/images/google.png')).uri}
-        onPress={() => promptAsync()}/>
+        onPress={() => promptAsync()}
+      />
     </View>
   );
 };

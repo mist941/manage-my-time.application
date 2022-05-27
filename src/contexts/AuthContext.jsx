@@ -1,6 +1,7 @@
 import {createContext, useEffect, useState} from "react";
 import * as Google from "expo-auth-session/providers/google";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import services from '../services';
 
 export const AuthContext = createContext();
 
@@ -19,23 +20,29 @@ const AuthProvider = ({children}) => {
 
   const getLoggedUser = async () => await AsyncStorage.getItem('@logged_user');
 
-  const putStandAloneKey = async key => {
-    await AsyncStorage.setItem(
-      '@logged_user',
-      JSON.stringify({
-        stand_alone_key: key
-      })
-    );
-    setCurrentUser(key);
-  };
+  // const putStandAloneKey = async key => {
+  //   await AsyncStorage.setItem(
+  //     '@logged_user',
+  //     JSON.stringify({
+  //       stand_alone_key: key
+  //     })
+  //   );
+  //   setCurrentUser(key);
+  // };
 
-  const putUser = async user => {
-    await AsyncStorage.setItem(
-      '@logged_user',
-      JSON.stringify(user)
-    );
-    setCurrentUser(user);
-  };
+  // const putUser = async user => {
+  //   await AsyncStorage.setItem(
+  //     '@logged_user',
+  //     JSON.stringify(user)
+  //   );
+  //   setCurrentUser(user);
+  // };
+
+  const signIn = userParams => {
+    services.authServices.signIn(userParams).then(res => {
+      console.log(res.data);
+    });
+  }
 
   return (
     <AuthContext.Provider
@@ -45,8 +52,7 @@ const AuthProvider = ({children}) => {
         request,
         currentUser,
         getLoggedUser,
-        putStandAloneKey,
-        putUser
+        signIn
       }}
     >
       {children}
