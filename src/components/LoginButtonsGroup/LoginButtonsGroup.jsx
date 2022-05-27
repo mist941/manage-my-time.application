@@ -25,7 +25,7 @@ const LoginButtonsGroup = () => {
 
     userInfoResponse.json().then(data => {
       const {email, id} = data;
-      signIn({email, id});
+      signIn({email, google_id: id});
     });
   }
 
