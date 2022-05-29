@@ -42,7 +42,6 @@ const AuthProvider = ({children}) => {
         response,
         request,
         currentUser,
-        getLoggedUser,
         signIn
       }}
     >

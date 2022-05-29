@@ -3,6 +3,7 @@ import {AuthContext} from "../contexts/AuthContext";
 import LoginScreen from "../screens/LoginScreen/LoginScreen";
 import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import CategoriesScreen from '../screens/CategoriesScreen/CategoriesScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,7 +17,7 @@ const Router = () => {
   ];
 
   if (currentUser) routes = [
-    <Stack.Screen name="Login" component={LoginScreen} options={{
+    <Stack.Screen name="Categories" component={CategoriesScreen} options={{
       headerShown: false
     }}/>
   ];

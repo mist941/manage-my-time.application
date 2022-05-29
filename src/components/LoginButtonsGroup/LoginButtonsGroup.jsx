@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from 'react';
-import CustomButton from '../CustomButton/CustomButton'
-import {View, Text} from 'react-native'
+import CustomButton from '../CustomButton/CustomButton';
+import {View, Text} from 'react-native';
 import {LoginButtonsGroupStyles} from './LoginButtonsGroup.styles';
 import Divider from '../Divider/Divider';
 import {Asset} from 'expo-asset';
