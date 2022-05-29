@@ -4,20 +4,20 @@ import Navigation from '../../components/Navigation/Navigation';
 import {StatusBar, Dimensions} from 'react-native';
 import {AppLayoutStyles} from './AppLayout.styles';
 
-const AppLayout = ({children, header, currentRoute}) => {
+const AppLayout = ({children, header, currentRoute, navigation}) => {
   const windowHeight = Dimensions.get('window').height;
 
   return (
     <View style={[
-      AppLayoutStyles.container,
+      AppLayoutStyles.layout,
       {
         marginTop: StatusBar.currentHeight,
         height: windowHeight
       }
     ]}>
       <View><Text>Header</Text></View>
-      <View><Text>Content</Text></View>
-      <Navigation/>
+      {children}
+      <Navigation currentRoute={currentRoute} navigation={navigation}/>
     </View>
   );
 };

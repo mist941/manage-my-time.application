@@ -1,8 +1,9 @@
 import {StyleSheet} from 'react-native';
 
 export const NavigationStyles = StyleSheet.create({
-  container: {
-    height: 100,
+  navigation: {
+    width: '100%',
+    height: 55,
     backgroundColor: '#fff',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -14,5 +15,10 @@ export const NavigationStyles = StyleSheet.create({
     shadowOpacity: 0.58,
     shadowRadius: 16.00,
     elevation: 24,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingLeft: '15%',
+    paddingRight: '15%'
   }
 });
