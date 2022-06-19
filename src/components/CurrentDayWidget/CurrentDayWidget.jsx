@@ -10,7 +10,7 @@ const CurrentDayWidget = () => {
         return (
           <View>
             <Text>{index}</Text>
-            <Divider key={index} height={1}/>
+            {index !== 23 && <Divider key={index} height={1}/>}
           </View>
         )
       })}

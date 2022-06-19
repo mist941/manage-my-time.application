@@ -5,7 +5,7 @@ export const AppLayoutStyles = StyleSheet.create({
     backgroundColor: '#F9F9F9',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     alignItems: 'center'
   }
 });

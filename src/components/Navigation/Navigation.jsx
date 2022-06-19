@@ -5,7 +5,6 @@ import NavItem from '../NavItem/NavItem';
 import {screens} from '../../router/screens';
 
 const Navigation = ({currentRoute, navigation}) => {
-
   return (
     <View style={NavigationStyles.navigation}>
       <NavItem

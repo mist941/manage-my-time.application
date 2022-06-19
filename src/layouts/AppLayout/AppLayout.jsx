@@ -4,7 +4,7 @@ import Navigation from '../../components/Navigation/Navigation';
 import {StatusBar, Dimensions} from 'react-native';
 import {AppLayoutStyles} from './AppLayout.styles';
 
-const AppLayout = ({children, header, currentRoute, navigation}) => {
+const AppLayout = ({children, currentRoute, navigation}) => {
   const windowHeight = Dimensions.get('window').height;
 
   return (
