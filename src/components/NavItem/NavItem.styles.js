@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import commonStyles from '../../common.styles';
 
 export const NavItemStyles = StyleSheet.create({
   navItemLine: {
@@ -11,6 +12,6 @@ export const NavItemStyles = StyleSheet.create({
   navItemName: {
     fontWeight: '600',
     fontSize: 16,
-    color: '#616161'
+    color: commonStyles.primaryTextColor
   }
 });

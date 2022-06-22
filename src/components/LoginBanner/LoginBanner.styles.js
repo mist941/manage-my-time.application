@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import commonStyles from '../../common.styles';
 
 export const LoginBannerStyles = StyleSheet.create({
   loginBackground: {
@@ -10,7 +11,7 @@ export const LoginBannerStyles = StyleSheet.create({
   title: {
     fontSize: 36,
     fontWeight: '800',
-    color: '#fff',
+    color: commonStyles.secondaryTextColor,
     marginBottom: 10,
     paddingRight: 35,
     paddingLeft: 35,
@@ -18,7 +19,7 @@ export const LoginBannerStyles = StyleSheet.create({
   description: {
     fontWeight: '400',
     fontSize: 15,
-    color: '#fff',
+    color: commonStyles.secondaryTextColor,
     paddingRight: 35,
     paddingLeft: 35,
   }

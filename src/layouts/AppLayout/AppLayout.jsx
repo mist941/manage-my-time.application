@@ -1,8 +1,9 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import Navigation from '../../components/Navigation/Navigation';
 import {StatusBar, Dimensions} from 'react-native';
 import {AppLayoutStyles} from './AppLayout.styles';
+import Header from '../../components/Header/Header';
 
 const AppLayout = ({children, currentRoute, navigation}) => {
   const windowHeight = Dimensions.get('window').height;
@@ -15,7 +16,7 @@ const AppLayout = ({children, currentRoute, navigation}) => {
         height: windowHeight
       }
     ]}>
-      <View><Text>Header</Text></View>
+      <Header/>
       {children}
       <Navigation currentRoute={currentRoute} navigation={navigation}/>
     </View>
