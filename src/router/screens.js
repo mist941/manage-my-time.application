@@ -1,5 +1,5 @@
 export const screens = {
-  dashboard: 'Dashboard',
+  run_task: 'Run Task',
   tasks: 'Tasks',
   categories: 'Categories',
   login: 'Login'

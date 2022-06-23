@@ -24,7 +24,7 @@ const Router = () => {
   ];
 
   if (currentUser) routes = [
-    <Stack.Screen name={screens.dashboard} component={DashboardScreen} options={navigationOptions}/>,
+    <Stack.Screen name={screens.run_task} component={DashboardScreen} options={navigationOptions}/>,
     <Stack.Screen name={screens.tasks} component={TasksScreen} options={navigationOptions}/>,
     <Stack.Screen name={screens.categories} component={CategoriesScreen} options={navigationOptions}/>
   ];

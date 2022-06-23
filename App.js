@@ -13,7 +13,7 @@ export default function App() {
   return (
     <I18nextProvider i18n={i18n}>
       <SafeAreaView style={styles.container}>
-        <StatusBar backgroundColor={commonStyles.primaryBackground}/>
+        <StatusBar backgroundColor={commonStyles.backgroundApp}/>
         <AuthProvider>
           <Router/>
         </AuthProvider>

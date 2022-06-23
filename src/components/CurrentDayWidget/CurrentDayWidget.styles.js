@@ -4,7 +4,8 @@ import commonStyles from '../../common.styles';
 export const CurrentDayWidgetStyles = StyleSheet.create({
   widgetWrap: {
     width: '95%',
-    height: 500,
+    height: 540,
+    marginTop: 15,
     borderBottomRightRadius: 8,
     borderTopRightRadius: 8,
     borderTopLeftRadius: 8,
@@ -16,5 +17,10 @@ export const CurrentDayWidgetStyles = StyleSheet.create({
     color: commonStyles.primaryTextColor,
     paddingTop: 5,
     paddingBottom: 5
+  },
+  days: {
+    display: 'flex',
+  },
+  day: {
   }
 });

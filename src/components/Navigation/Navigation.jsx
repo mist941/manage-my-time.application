@@ -13,8 +13,8 @@ const Navigation = ({currentRoute, navigation}) => {
         navigation={navigation}
       />
       <NavItem
-        name={screens.dashboard}
-        isActive={currentRoute === screens.dashboard}
+        name={screens.run_task}
+        isActive={currentRoute === screens.run_task}
         navigation={navigation}
       />
       <NavItem

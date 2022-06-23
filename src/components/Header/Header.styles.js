@@ -3,8 +3,8 @@ import commonStyles from '../../common.styles';
 
 export const HeaderStyles = StyleSheet.create({
   container: {
-    marginTop: 18,
-    height: 100,
+    marginTop: 10,
+    height: 70,
     width: '95%',
     backgroundColor: commonStyles.primaryBackground,
     borderRadius: 20,
