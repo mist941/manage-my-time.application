@@ -34,7 +34,7 @@ const CurrentDayWidget = () => {
         {Array.from(Array(24)).map((_, index) => {
           return (
             <View>
-              <Text style={CurrentDayWidgetStyles.hour}>{index} h</Text>
+              <Text style={CurrentDayWidgetStyles.hour}>{index} {index <= 12 ? 'AM' : 'PM'}</Text>
               {index !== 23 && <Divider key={index} height={1}/>}
             </View>
           )
