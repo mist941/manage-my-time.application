@@ -13,12 +13,24 @@ const CurrentDayWidget = () => {
     <View style={CurrentDayWidgetStyles.widgetWrap}>
       <View style={CurrentDayWidgetStyles.days}>
         {days.map((day, index) => (
-          <Pressable key={index} style={CurrentDayWidgetStyles.day}>
-            <Text>{day.label}</Text>
+          <Pressable
+            key={index}
+            style={[
+              CurrentDayWidgetStyles.dayWrap,
+              index === 1 && CurrentDayWidgetStyles.currentDay
+            ]}
+          >
+            <Text style={[
+              CurrentDayWidgetStyles.day,
+              index === 1 && CurrentDayWidgetStyles.currentDayText
+            ]}
+            >
+              {day.label}
+            </Text>
           </Pressable>
         ))}
       </View>
-      <ScrollView>
+      <ScrollView style={CurrentDayWidgetStyles.content}>
         {Array.from(Array(24)).map((_, index) => {
           return (
             <View>

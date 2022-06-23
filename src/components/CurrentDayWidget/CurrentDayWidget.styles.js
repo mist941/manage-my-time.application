@@ -11,7 +11,11 @@ export const CurrentDayWidgetStyles = StyleSheet.create({
     borderTopLeftRadius: 8,
     borderBottomLeftRadius: 8,
     padding: 10,
+    alignItems: 'center',
     ...commonStyles.primaryShadow,
+  },
+  content: {
+    width: '100%'
   },
   hour: {
     color: commonStyles.primaryTextColor,
@@ -20,7 +24,32 @@ export const CurrentDayWidgetStyles = StyleSheet.create({
   },
   days: {
     display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '50%',
+    paddingBottom: 5
+  },
+  dayWrap: {
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: commonStyles.secondaryBackground,
+    height: 30,
+    width: 30,
+    borderRadius: 100,
+    opacity: 0.5
+  },
+  currentDay: {
+    opacity: 0.7,
+    width: 40,
+    height: 40
   },
   day: {
+    color: commonStyles.secondaryTextColor,
+    fontSize: 8,
+    textAlign: 'center',
+  },
+  currentDayText: {
+    fontSize: 10
   }
 });
