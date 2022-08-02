@@ -1,13 +1,11 @@
 import React from 'react';
 import AppLayout from '../../layouts/AppLayout/AppLayout';
-import CurrentDayWidget from '../../components/CurrentDayWidget/CurrentDayWidget';
-import TaskManagement from '../../components/TaskManagement/TaskManagement';
+import {Text} from 'react-native';
 
-const DashboardScreen = ({navigation, route}) => {
+const  DashboardScreen = () => {
   return (
-    <AppLayout currentRoute={route.name} navigation={navigation}>
-      <CurrentDayWidget/>
-      <TaskManagement/>
+    <AppLayout>
+      <Text>Dashboard</Text>
     </AppLayout>
   );
 };

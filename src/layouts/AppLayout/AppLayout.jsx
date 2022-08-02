@@ -1,10 +1,10 @@
 import React from 'react';
 import {View} from 'react-native';
-import Navigation from '../../components/Navigation/Navigation';
 import {StatusBar, Dimensions} from 'react-native';
 import {AppLayoutStyles} from './AppLayout.styles';
+import Navigation from '../../components/Navigation/Navigation/Navigation';
 
-const AppLayout = ({children, currentRoute, navigation}) => {
+const AppLayout = ({children}) => {
   const windowHeight = Dimensions.get('window').height;
 
   return (
@@ -15,8 +15,10 @@ const AppLayout = ({children, currentRoute, navigation}) => {
         height: windowHeight
       }
     ]}>
-      {children}
-      <Navigation currentRoute={currentRoute} navigation={navigation}/>
+      <View>
+        {children}
+      </View>
+      <Navigation/>
     </View>
   );
 };

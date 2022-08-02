@@ -7,6 +7,7 @@ import CategoriesScreen from '../screens/CategoriesScreen/CategoriesScreen';
 import TasksScreen from '../screens/TasksScreen/TasksScreen';
 import DashboardScreen from '../screens/DashboardScreen/DashboardScreen';
 import {screens} from './screens';
+import StatisticsScreen from '../screens/StatisticsScreen/StatisticsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,10 +25,12 @@ const Router = () => {
   ];
 
   if (currentUser) routes = [
-    <Stack.Screen name={screens.run_task} component={DashboardScreen} options={navigationOptions}/>,
+    <Stack.Screen name={screens.dashboard} component={DashboardScreen} options={navigationOptions}/>,
     <Stack.Screen name={screens.tasks} component={TasksScreen} options={navigationOptions}/>,
-    <Stack.Screen name={screens.categories} component={CategoriesScreen} options={navigationOptions}/>
+    <Stack.Screen name={screens.categories} component={CategoriesScreen} options={navigationOptions}/>,
+    <Stack.Screen name={screens.statistic} component={StatisticsScreen} options={navigationOptions}/>
   ];
+
   return (
     <NavigationContainer>
       <Stack.Navigator>

@@ -1,18 +1,19 @@
 import {StyleSheet} from 'react-native';
-import commonStyles from '../../common.styles';
+import commonStyles from '../../../common.styles';
 
 export const NavigationStyles = StyleSheet.create({
   navigation: {
-    width: '100%',
-    height: 55,
+    width: '80%',
     backgroundColor: commonStyles.primaryBackground,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderRadius: 24,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingLeft: '15%',
-    paddingRight: '15%',
+    paddingLeft: '10%',
+    paddingRight: '10%',
+    paddingTop: 10,
+    paddingBottom: 10,
+    marginBottom: 7,
     ...commonStyles.primaryShadow
   }
 });

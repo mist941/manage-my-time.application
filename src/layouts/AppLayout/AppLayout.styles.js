@@ -7,6 +7,8 @@ export const AppLayoutStyles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+    paddingLeft: 10,
+    paddingRight: 10
+  },
 });

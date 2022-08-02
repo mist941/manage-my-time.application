@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import commonStyles from '../../../common.styles';
 
 export const CustomButtonStyles = StyleSheet.create({
   button: {
@@ -9,7 +10,7 @@ export const CustomButtonStyles = StyleSheet.create({
     borderRadius: 8
   },
   primary: {
-    backgroundColor: '#5D5FEF',
+    backgroundColor: commonStyles.secondaryBackground,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

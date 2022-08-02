@@ -9,7 +9,7 @@ const LoginBanner = React.memo(() => {
   return (
     <>
       <ImageBackground
-        source={{uri: Asset.fromModule(require('../../../assets/images/background-login.png')).uri}}
+        source={{uri: Asset.fromModule(require('../../../../assets/images/background-login.png')).uri}}
         style={LoginBannerStyles.loginBackground}
       >
         <Text style={LoginBannerStyles.title}>

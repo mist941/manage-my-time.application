@@ -1,10 +1,13 @@
 import React from 'react';
 import AppLayout from '../../layouts/AppLayout/AppLayout';
 import {Text} from 'react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import {iconsList} from '../../helpers/iconsList';
 
-const CategoriesScreen = ({navigation, route}) => {
+const CategoriesScreen = () => {
   return (
-    <AppLayout currentRoute={route.name} navigation={navigation}>
+    <AppLayout>
+      <Ionicons name={iconsList[0]} size={25} color='black'/>
       <Text>Categories</Text>
     </AppLayout>
   );
