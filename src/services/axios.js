@@ -7,7 +7,6 @@ const currentUser = AsyncStorage.getItem('@logged_user');
 
 const addAccessTokenToRequestsHeader = (agent, user) => {
   if (user) {
-    console.log(JSON.stringify(user))
     agent.defaults.headers['user'] = JSON.stringify(user);
   }
 };
@@ -17,7 +16,7 @@ addAccessTokenToRequestsHeader(axiosApiInstance, currentUser);
 axiosApiInstance.interceptors.request.use(
   async config => {
     config.withCredentials = true;
-    config.baseURL = 'http://192.168.0.102:3005/v1'
+    config.baseURL = 'http://192.168.0.196:3005/v1'
     return config;
   },
   error => {

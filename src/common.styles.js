@@ -4,6 +4,7 @@ export default {
   secondaryBackground: '#8811FF',
   primaryOpacityBackground: 'rgba(136, 17, 255, 0.14)',
   primaryTextColor: '#616161',
+  textColor: '#000',
   secondaryTextColor: '#fff',
   primaryShadow: {
     backgroundColor: '#fff',

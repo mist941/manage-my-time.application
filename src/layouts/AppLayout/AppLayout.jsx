@@ -1,10 +1,10 @@
 import React from 'react';
-import {View} from 'react-native';
-import {StatusBar, Dimensions} from 'react-native';
+import {Pressable, View} from 'react-native';
+import {StatusBar, Dimensions, Platform} from 'react-native';
 import {AppLayoutStyles} from './AppLayout.styles';
 import Navigation from '../../components/Navigation/Navigation/Navigation';
 
-const AppLayout = ({children}) => {
+const AppLayout = ({children, outsidePress}) => {
   const windowHeight = Dimensions.get('window').height;
 
   return (
@@ -12,12 +12,12 @@ const AppLayout = ({children}) => {
       AppLayoutStyles.layout,
       {
         marginTop: StatusBar.currentHeight,
-        height: windowHeight
+        height: Platform.OS === 'ios' ? '100%' : windowHeight
       }
     ]}>
-      <View>
+      <Pressable onPress={outsidePress} style={AppLayoutStyles.content}>
         {children}
-      </View>
+      </Pressable>
       <Navigation/>
     </View>
   );

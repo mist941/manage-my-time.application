@@ -9,6 +9,13 @@ export const AppLayoutStyles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingLeft: 10,
-    paddingRight: 10
+    paddingRight: 10,
   },
+  content: {
+    width: '100%',
+    marginTop: 20,
+    paddingLeft: 15,
+    paddingRight: 15,
+    flex: 1,
+  }
 });
