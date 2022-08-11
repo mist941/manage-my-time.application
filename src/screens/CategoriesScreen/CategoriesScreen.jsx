@@ -6,6 +6,7 @@ import Preloader from '../../components/Preloader/Preloader';
 import CategoriesHeader from '../../components/CategoriesScreen/CategoriesHeader/CategoriesHeader';
 import SingleCategory from '../../components/CategoriesScreen/SingleCategory/SingleCategory';
 import {CategoriesScreenStyles} from './CategoriesScreen.styles';
+import AddCategoryBtn from '../../components/CategoriesScreen/AddCategoryBtn/AddCategoryBtn';
 
 const CategoriesScreen = () => {
   const [categories, setCategories] = useState([]);
@@ -35,6 +36,14 @@ const CategoriesScreen = () => {
     });
   }
 
+  const changeCategory = params => {
+    console.log(params);
+  }
+
+  const addNewCategory = () => {
+
+  }
+
   return (
     <AppLayout outsidePress={outsidePress}>
       <CategoriesHeader count={categories.length}/>
@@ -45,9 +54,11 @@ const CategoriesScreen = () => {
             category={category}
             setEdit={setCurrentEdit}
             isEdit={currentEdit === category._id}
+            changeCategory={changeCategory}
             deleteCategory={deleteCategory}
           />
         ))}
+        <AddCategoryBtn onClick={addNewCategory}/>
       </View>
     </AppLayout>
   );

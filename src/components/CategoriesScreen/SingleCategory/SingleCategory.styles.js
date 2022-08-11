@@ -5,7 +5,7 @@ export const SingleCategoryStyles = StyleSheet.create({
   wrap: {
     backgroundColor: 'rgba(136, 17, 255, 0.1)',
     height: 50,
-    width: '47%',
+    width: '100%',
     borderRadius: 14,
     marginBottom: 18,
   },
@@ -13,16 +13,19 @@ export const SingleCategoryStyles = StyleSheet.create({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    position: 'relative',
   },
   deleteBtn: {
-    backgroundColor: '#E0DFE5',
     borderColor: commonStyles.secondaryBackground,
     borderWidth: 1,
     borderRadius: 20,
+    width: 25,
+    height: 25,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     position: 'absolute',
-    top: -5,
-    right: -5,
+    top: 12,
+    right: 10,
   },
   color: {
     width: 50,
@@ -36,6 +39,7 @@ export const SingleCategoryStyles = StyleSheet.create({
   text: {
     color: commonStyles.textColor,
     fontWeight: '400',
+    width: '50%',
     fontSize: 14,
   }
 });
