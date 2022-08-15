@@ -15,4 +15,11 @@ export default {
       throw error;
     }
   },
+  createCategory: async () => {
+    try {
+      return await axios.post(`categories`);
+    } catch (error) {
+      throw error;
+    }
+  },
 }

@@ -7,9 +7,13 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({children}) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getLoggedUser().then(data => setCurrentUser(JSON.parse(data)));
+    getLoggedUser().then(data => {
+      setCurrentUser(JSON.parse(data));
+      setLoading(false);
+    });
   }, []);
 
   const [request, response, promptAsync] = Google.useAuthRequest({
@@ -42,6 +46,7 @@ const AuthProvider = ({children}) => {
         response,
         request,
         currentUser,
+        loading,
         signIn
       }}
     >

@@ -41,7 +41,10 @@ const CategoriesScreen = () => {
   }
 
   const addNewCategory = () => {
-
+    services.categoriesServices.createCategory().then(res => {
+      console.log(res.status);
+      if (res.data) load();
+    });
   }
 
   return (

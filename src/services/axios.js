@@ -16,7 +16,7 @@ addAccessTokenToRequestsHeader(axiosApiInstance, currentUser);
 axiosApiInstance.interceptors.request.use(
   async config => {
     config.withCredentials = true;
-    config.baseURL = 'http://192.168.0.101:3005/v1'
+    config.baseURL = 'http://192.168.0.102:3005/v1'
     return config;
   },
   error => {

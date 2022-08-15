@@ -12,7 +12,7 @@ import StatisticsScreen from '../screens/StatisticsScreen/StatisticsScreen';
 const Stack = createNativeStackNavigator();
 
 const Router = () => {
-  const {currentUser} = useContext(AuthContext);
+  const {currentUser, loading} = useContext(AuthContext);
 
   const navigationOptions = {
     animationEnabled: false,
@@ -21,15 +21,42 @@ const Router = () => {
   };
 
   let routes = [
-    <Stack.Screen name={screens.login} component={LoginScreen} options={navigationOptions}/>
+    <Stack.Screen
+      key={screens.login}
+      name={screens.login}
+      component={LoginScreen}
+      options={navigationOptions}
+    />
   ];
 
   if (currentUser) routes = [
-    <Stack.Screen name={screens.dashboard} component={DashboardScreen} options={navigationOptions}/>,
-    <Stack.Screen name={screens.tasks} component={TasksScreen} options={navigationOptions}/>,
-    <Stack.Screen name={screens.categories} component={CategoriesScreen} options={navigationOptions}/>,
-    <Stack.Screen name={screens.statistic} component={StatisticsScreen} options={navigationOptions}/>
+    <Stack.Screen
+      key={screens.dashboard}
+      name={screens.dashboard}
+      component={DashboardScreen}
+      options={navigationOptions}
+    />,
+    <Stack.Screen
+      key={screens.tasks}
+      name={screens.tasks}
+      component={TasksScreen}
+      options={navigationOptions}
+    />,
+    <Stack.Screen
+      key={screens.categories}
+      name={screens.categories}
+      component={CategoriesScreen}
+      options={navigationOptions}
+    />,
+    <Stack.Screen
+      key={screens.statistic}
+      name={screens.statistic}
+      component={StatisticsScreen}
+      options={navigationOptions}
+    />
   ];
+
+  if (loading) return null;
 
   return (
     <NavigationContainer>
