@@ -1,18 +1,17 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Animated, Pressable, Text, TextInput} from 'react-native';
+import {Animated, Pressable, TextInput} from 'react-native';
 import {SingleCategoryStyles} from './SingleCategory.styles';
 import {colorsList} from '../../../helpers/colorsList';
 import {Ionicons} from '@expo/vector-icons';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {useOpacityAnimate} from '../../../hooks/useOpacityAnimate';
 import EmptyCategoryIcon from '../../../../assets/icons/EmptyCategoryIcon';
-import SmoothPicker from 'react-native-smooth-picker';
 
 const SingleCategory = ({category, isEdit, setEdit, deleteCategory, changeCategory}) => {
   const animatedOpacity = useRef(new Animated.Value(1)).current;
   const handlePress = useOpacityAnimate(animatedOpacity, () => setEdit(isEdit ? null : category._id));
   const [currentName, setCurrentName] = useState(category.name);
-  const [indexSelected, setIndexSelected] = useState(category.name);
+
   const inputRef = useRef();
   const RBSheetRef = useRef();
 
@@ -25,8 +24,6 @@ const SingleCategory = ({category, isEdit, setEdit, deleteCategory, changeCatego
   const changeName = () => currentName.length ? changeCategory({name: currentName}) : setCurrentName(category.name);
 
   const openModal = () => RBSheetRef.current.open();
-
-  const handleChange = (index) => setIndexSelected(index);
 
   return (
     <Pressable style={SingleCategoryStyles.wrap} onPress={handlePress}>
