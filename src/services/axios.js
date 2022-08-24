@@ -3,20 +3,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const axiosApiInstance = axios.create();
 
-const currentUser = AsyncStorage.getItem('@logged_user');
-
-const addAccessTokenToRequestsHeader = (agent, user) => {
-  if (user) {
-    agent.defaults.headers['user'] = JSON.stringify(user);
-  }
-};
-
-addAccessTokenToRequestsHeader(axiosApiInstance, currentUser);
-
 axiosApiInstance.interceptors.request.use(
   async config => {
+    const currentUser = await AsyncStorage.getItem('@logged_user');
+    if (currentUser) {
+      config.headers['user'] = JSON.stringify(currentUser);
+    }
     config.withCredentials = true;
-    config.baseURL = 'http://192.168.0.102:3005/v1'
+    config.baseURL = 'http://192.168.0.100:3005/v1'
     return config;
   },
   error => {

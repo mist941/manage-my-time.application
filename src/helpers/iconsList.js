@@ -4,7 +4,7 @@ export const iconsList = [
   'attach-outline',
   'briefcase-outline',
   'barbell-outline',
-  'balloon-outline',
+  'car-outline',
   'basketball-outline',
   'bed-outline',
   'brush-outline',

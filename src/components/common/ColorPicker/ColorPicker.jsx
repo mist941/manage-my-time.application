@@ -1,30 +1,32 @@
 import React, {useRef} from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import ScrollPicker from 'react-native-picker-scrollview';
+import {ColorPickerStyles} from './ColorPicker.styles';
+import {colorsList} from '../../../helpers/colorsList';
 
-const ColorPicker = ({selectedIndex = 0, value, onChange}) => {
+const ColorPicker = ({selectedColor = '', onChange}) => {
   const scrollPicker = useRef(null);
+  const options = Object.entries(colorsList);
+  const selectedIndex = options.findIndex(([key]) => key === selectedColor);
 
   return (
     <ScrollPicker
       ref={scrollPicker}
-      dataSource={}
+      dataSource={options}
       selectedIndex={selectedIndex}
-      itemHeight={50}
-      itemWidth={50}
-      wrapperHeight={250}
+      itemHeight={90}
+      itemWidth={90}
+      wrapperHeight={220}
       wrapperColor='#ffffff'
-      highlightColor='#d8d8d8'
-      renderItem={(data, index, isSelected) => {
+      highlightColor='#868686'
+      renderItem={data => {
         return (
-          <View style={{width: 50}}>
-            <Text>{data}</Text>
+          <View style={ColorPickerStyles.itemWrap}>
+            <View style={[ColorPickerStyles.color, {backgroundColor: data[1]}]}/>
           </View>
         )
       }}
-      onValueChange={(data, selectedIndex) => {
-
-      }}
+      onValueChange={data => onChange(data[0], "color")}
     />
   );
 };

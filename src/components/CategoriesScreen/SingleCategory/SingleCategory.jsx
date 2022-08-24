@@ -1,11 +1,13 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Animated, Pressable, TextInput} from 'react-native';
+import {Animated, Pressable, TextInput, View} from 'react-native';
 import {SingleCategoryStyles} from './SingleCategory.styles';
 import {colorsList} from '../../../helpers/colorsList';
 import {Ionicons} from '@expo/vector-icons';
-import RBSheet from 'react-native-raw-bottom-sheet';
 import {useOpacityAnimate} from '../../../hooks/useOpacityAnimate';
 import EmptyCategoryIcon from '../../../../assets/icons/EmptyCategoryIcon';
+import BottomSheet from '../../common/BottomSheet/BottomSheet';
+import ColorPicker from '../../common/ColorPicker/ColorPicker';
+import IconPicker from '../../common/IconPicker/IconPicker';
 
 const SingleCategory = ({category, isEdit, setEdit, deleteCategory, changeCategory}) => {
   const animatedOpacity = useRef(new Animated.Value(1)).current;
@@ -21,7 +23,11 @@ const SingleCategory = ({category, isEdit, setEdit, deleteCategory, changeCatego
 
   const onDelete = () => deleteCategory(category._id);
 
-  const changeName = () => currentName.length ? changeCategory({name: currentName}) : setCurrentName(category.name);
+  const changeName = () => currentName.length ?
+    changeCategory(category._id, {name: currentName}) :
+    setCurrentName(category.name);
+
+  const changeParam = (value, type) => changeCategory(category._id, {[type]: value});
 
   const openModal = () => RBSheetRef.current.open();
 
@@ -46,22 +52,13 @@ const SingleCategory = ({category, isEdit, setEdit, deleteCategory, changeCatego
           <Ionicons name="close-outline" size={20} color="black"/>
         </Pressable>
       </Animated.View>
-      <RBSheet
-        ref={RBSheetRef}
-        height={250}
-        openDuration={250}
-        customStyles={{
-          container: {
-            justifyContent: "center",
-            alignItems: "center",
-            padding: 15,
-            borderTopRightRadius: 20,
-            borderTopLeftRadius: 20,
-          }
-        }}
-      >
-
-      </RBSheet>
+      <BottomSheet ref={RBSheetRef}>
+        <View style={SingleCategoryStyles.pickers}>
+          <ColorPicker selectedColor={category.color} onChange={changeParam}/>
+          <View style={SingleCategoryStyles.spacePickers}/>
+          <IconPicker selectedIcon={category.icon} onChange={changeParam}/>
+        </View>
+      </BottomSheet>
     </Pressable>
   );
 };

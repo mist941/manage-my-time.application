@@ -41,5 +41,14 @@ export const SingleCategoryStyles = StyleSheet.create({
     fontWeight: '400',
     width: '50%',
     fontSize: 14,
+  },
+  pickers: {
+    flexDirection: 'row',
+    width: '65%',
+    justifyContent: 'space-between'
+  },
+  spacePickers: {
+    width: '15%',
+    height: '100%'
   }
 });

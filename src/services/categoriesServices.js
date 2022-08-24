@@ -22,4 +22,11 @@ export default {
       throw error;
     }
   },
+  changeCategory: async (id, params) => {
+    try {
+      return await axios.put(`categories/${id}`, params);
+    } catch (error) {
+      throw error;
+    }
+  },
 }

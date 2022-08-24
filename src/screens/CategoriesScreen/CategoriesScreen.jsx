@@ -13,16 +13,14 @@ const CategoriesScreen = () => {
   const [loading, setLoading] = useState(true);
   const [currentEdit, setCurrentEdit] = useState(null);
 
-  const load = () => {
+  useEffect(() => {
     services.categoriesServices.getCategories().then(res => {
       if (res.data) {
         setCategories(res.data);
         setLoading(false);
       }
-    });
-  }
-
-  useEffect(() => load(), []);
+    })
+  }, []);
 
   if (loading) return <Preloader/>;
 
@@ -32,18 +30,23 @@ const CategoriesScreen = () => {
 
   const deleteCategory = id => {
     services.categoriesServices.deleteCategory(id).then(res => {
-      if (res.status === 200) load();
+      if (res.status === 200) {
+        setCategories(prevState => prevState.filter(category => category._id !== id));
+      }
     });
   }
 
-  const changeCategory = params => {
-    console.log(params);
+  const changeCategory = (id, params) => {
+    services.categoriesServices.changeCategory(id, params).then(res => {
+      if (res.data) {
+        setCategories(prevState => prevState.map(category => category._id === id ? res.data : category));
+      }
+    });
   }
 
   const addNewCategory = () => {
     services.categoriesServices.createCategory().then(res => {
-      console.log(res.status);
-      if (res.data) load();
+      if (res.data) setCategories(prevState => [...prevState, res.data]);
     });
   }
 
@@ -62,6 +65,7 @@ const CategoriesScreen = () => {
           />
         ))}
         <AddCategoryBtn onClick={addNewCategory}/>
+        <AddCategoryBtn onClick={async () => sendPushNotification()}/>
       </View>
     </AppLayout>
   );
