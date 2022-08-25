@@ -6,8 +6,17 @@ import * as WebBrowser from 'expo-web-browser';
 import AuthProvider from './src/contexts/AuthContext';
 import Router from './src/router/Router';
 import commonStyles from './src/common.styles';
+import * as Notifications from 'expo-notifications';
 
 WebBrowser.maybeCompleteAuthSession();
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
 
 export default function App() {
   return (

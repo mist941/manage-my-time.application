@@ -65,7 +65,6 @@ const CategoriesScreen = () => {
           />
         ))}
         <AddCategoryBtn onClick={addNewCategory}/>
-        <AddCategoryBtn onClick={async () => sendPushNotification()}/>
       </View>
     </AppLayout>
   );
