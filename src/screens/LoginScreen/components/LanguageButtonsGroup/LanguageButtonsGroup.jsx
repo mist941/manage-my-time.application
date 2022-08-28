@@ -16,7 +16,7 @@ const LanguageButtonsGroup = () => {
         <Image
           style={LanguageButtonsGroupStyles.language}
           source={{
-            uri: Asset.fromModule(require('../../../../assets/images/english.png')).uri,
+            uri: Asset.fromModule(require('../../../../../assets/images/english.png')).uri,
           }}
         />
       </Pressable>
@@ -24,7 +24,7 @@ const LanguageButtonsGroup = () => {
         <Image
           style={LanguageButtonsGroupStyles.language}
           source={{
-            uri: Asset.fromModule(require('../../../../assets/images/ukrainian.png')).uri,
+            uri: Asset.fromModule(require('../../../../../assets/images/ukrainian.png')).uri,
           }}
         />
       </Pressable>
@@ -32,7 +32,7 @@ const LanguageButtonsGroup = () => {
         <Image
           style={[LanguageButtonsGroupStyles.language, LanguageButtonsGroupStyles.last]}
           source={{
-            uri: Asset.fromModule(require('../../../../assets/images/russian.png')).uri,
+            uri: Asset.fromModule(require('../../../../../assets/images/russian.png')).uri,
           }}
         />
       </Pressable>

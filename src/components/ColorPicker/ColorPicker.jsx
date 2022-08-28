@@ -2,7 +2,7 @@ import React, {useRef} from 'react';
 import {View} from 'react-native';
 import ScrollPicker from 'react-native-picker-scrollview';
 import {ColorPickerStyles} from './ColorPicker.styles';
-import {colorsList} from '../../../helpers/colorsList';
+import {colorsList} from '../../helpers/colorsList';
 
 const ColorPicker = ({selectedColor = '', onChange}) => {
   const scrollPicker = useRef(null);

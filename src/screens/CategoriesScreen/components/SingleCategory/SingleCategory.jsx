@@ -1,13 +1,13 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Animated, Pressable, TextInput, View} from 'react-native';
 import {SingleCategoryStyles} from './SingleCategory.styles';
-import {colorsList} from '../../../helpers/colorsList';
+import {colorsList} from '../../../../helpers/colorsList';
 import {Ionicons} from '@expo/vector-icons';
-import {useOpacityAnimate} from '../../../hooks/useOpacityAnimate';
-import EmptyCategoryIcon from '../../../../assets/icons/EmptyCategoryIcon';
-import BottomSheet from '../../common/BottomSheet/BottomSheet';
-import ColorPicker from '../../common/ColorPicker/ColorPicker';
-import IconPicker from '../../common/IconPicker/IconPicker';
+import {useOpacityAnimate} from '../../../../hooks/useOpacityAnimate';
+import EmptyCategoryIcon from '../../../../../assets/icons/EmptyCategoryIcon';
+import BottomSheet from '../../../../components/BottomSheet/BottomSheet';
+import ColorPicker from '../../../../components/ColorPicker/ColorPicker';
+import IconPicker from '../../../../components/IconPicker/IconPicker';
 
 const SingleCategory = ({category, isEdit, setEdit, deleteCategory, changeCategory}) => {
   const animatedOpacity = useRef(new Animated.Value(1)).current;

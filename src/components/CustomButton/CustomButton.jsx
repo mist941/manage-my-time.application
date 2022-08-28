@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import {Text, Pressable, Animated, Image} from 'react-native';
 import {CustomButtonStyles} from "./CustomButton.styles";
-import {capitalizeFirstLetter} from "../../../helpers/stringHelpers";
+import {capitalizeFirstLetter} from "../../helpers/stringHelpers";
 
 const CustomButton = ({text, onPress, type = 'primary', iconUri}) => {
   const animatedOpacity = useRef(new Animated.Value(1)).current;

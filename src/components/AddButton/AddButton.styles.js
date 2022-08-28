@@ -1,8 +1,10 @@
 import {StyleSheet} from 'react-native';
 
-export const AddCategoryBtnStyles = StyleSheet.create({
+export const AddButtonStyles = StyleSheet.create({
   wrapBtn: {
     width: '100%',
+    marginBottom: 10,
+    marginTop: 10
   },
   addCategoryBtn: {
     borderColor: '#aaa',

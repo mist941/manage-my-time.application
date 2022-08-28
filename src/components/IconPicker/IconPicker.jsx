@@ -2,7 +2,7 @@ import React, {useRef} from 'react';
 import {View} from 'react-native';
 import ScrollPicker from 'react-native-picker-scrollview';
 import {IconPickerStyles} from './IconPicker.styles';
-import {iconsList} from '../../../helpers/iconsList';
+import {iconsList} from '../../helpers/iconsList';
 import {Ionicons} from '@expo/vector-icons';
 
 const IconPicker = ({selectedIcon = '', onChange}) => {

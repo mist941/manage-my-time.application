@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import AppLayout from '../../layouts/AppLayout/AppLayout';
-import {View} from 'react-native';
 import services from '../../services';
 import Preloader from '../../components/Preloader/Preloader';
-import CategoriesHeader from '../../components/CategoriesScreen/CategoriesHeader/CategoriesHeader';
-import SingleCategory from '../../components/CategoriesScreen/SingleCategory/SingleCategory';
-import {CategoriesScreenStyles} from './CategoriesScreen.styles';
-import AddCategoryBtn from '../../components/CategoriesScreen/AddCategoryBtn/AddCategoryBtn';
+import SingleCategory from './components/SingleCategory/SingleCategory';
+import PageHeader from '../../components/PageHeader/PageHeader';
+import AddButton from '../../components/AddButton/AddButton';
+import ScrollListWrapper from '../../components/ScrollListWrapper/ScrollListWrapper';
 
 const CategoriesScreen = () => {
   const [categories, setCategories] = useState([]);
@@ -21,8 +20,6 @@ const CategoriesScreen = () => {
       }
     })
   }, []);
-
-  if (loading) return <Preloader/>;
 
   const outsidePress = () => {
     setCurrentEdit(null);
@@ -50,10 +47,12 @@ const CategoriesScreen = () => {
     });
   }
 
+  if (loading) return <Preloader/>;
+
   return (
     <AppLayout outsidePress={outsidePress}>
-      <CategoriesHeader count={categories.length}/>
-      <View style={CategoriesScreenStyles.list}>
+      <PageHeader name="Categories" count={categories.length}/>
+      <ScrollListWrapper>
         {categories.map(category => (
           <SingleCategory
             key={category._id}
@@ -64,8 +63,8 @@ const CategoriesScreen = () => {
             deleteCategory={deleteCategory}
           />
         ))}
-        <AddCategoryBtn onClick={addNewCategory}/>
-      </View>
+      </ScrollListWrapper>
+      <AddButton onClick={addNewCategory}/>
     </AppLayout>
   );
 };
