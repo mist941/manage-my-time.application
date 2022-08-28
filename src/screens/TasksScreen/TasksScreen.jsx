@@ -5,6 +5,7 @@ import {Text} from 'react-native';
 import AddButton from '../../components/AddButton/AddButton';
 import Preloader from '../../components/Preloader/Preloader';
 import ScrollListWrapper from '../../components/ScrollListWrapper/ScrollListWrapper';
+import SidebarDrawer from '../../components/SidebarDrawer/SidebarDrawer';
 
 const TasksScreen = () => {
   const [tasks, setTasks] = useState([]);
@@ -23,15 +24,20 @@ const TasksScreen = () => {
   if (loading) return <Preloader/>;
 
   return (
-    <AppLayout>
-      <PageHeader name="Tasks" count={0}/>
-      <ScrollListWrapper>
-        {tasks.map(category => (
-          <Text>task</Text>
-        ))}
-      </ScrollListWrapper>
-      <AddButton onClick={addNewTask}/>
-    </AppLayout>
+    <>
+      <AppLayout>
+        <PageHeader name="Tasks" count={0}/>
+        <ScrollListWrapper>
+          {tasks.map(category => (
+            <Text>task</Text>
+          ))}
+        </ScrollListWrapper>
+        <AddButton onClick={addNewTask}/>
+      </AppLayout>
+      <SidebarDrawer>
+        <Text>Text</Text>
+      </SidebarDrawer>
+    </>
   );
 };
 
