@@ -10,6 +10,7 @@ import SidebarDrawer from '../../components/SidebarDrawer/SidebarDrawer';
 const TasksScreen = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isOpenSidebar, setOpenSidebar] = useState(false);
 
   useEffect(() => {
     new Promise(resolve => {
@@ -17,9 +18,7 @@ const TasksScreen = () => {
     }).then(() => setLoading(false));
   }, []);
 
-  const addNewTask = () => {
-
-  }
+  const addNewTask = () => setOpenSidebar(true);
 
   if (loading) return <Preloader/>;
 
@@ -34,7 +33,7 @@ const TasksScreen = () => {
         </ScrollListWrapper>
         <AddButton onClick={addNewTask}/>
       </AppLayout>
-      <SidebarDrawer>
+      <SidebarDrawer isOpen={isOpenSidebar}>
         <Text>Text</Text>
       </SidebarDrawer>
     </>
