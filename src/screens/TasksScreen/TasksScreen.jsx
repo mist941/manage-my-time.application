@@ -5,12 +5,10 @@ import {Text} from 'react-native';
 import AddButton from '../../components/AddButton/AddButton';
 import Preloader from '../../components/Preloader/Preloader';
 import ScrollListWrapper from '../../components/ScrollListWrapper/ScrollListWrapper';
-import SidebarDrawer from '../../components/SidebarDrawer/SidebarDrawer';
 
 const TasksScreen = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [isOpenSidebar, setOpenSidebar] = useState(false);
 
   useEffect(() => {
     new Promise(resolve => {
@@ -18,7 +16,7 @@ const TasksScreen = () => {
     }).then(() => setLoading(false));
   }, []);
 
-  const addNewTask = () => setOpenSidebar(true);
+  const addNewTask = () => {};
 
   if (loading) return <Preloader/>;
 
@@ -27,15 +25,12 @@ const TasksScreen = () => {
       <AppLayout>
         <PageHeader name="Tasks" count={0}/>
         <ScrollListWrapper>
-          {tasks.map(category => (
+          {tasks.map(task => (
             <Text>task</Text>
           ))}
         </ScrollListWrapper>
-        <AddButton onClick={addNewTask}/>
+        <AddButton/>
       </AppLayout>
-      <SidebarDrawer isOpen={isOpenSidebar}>
-        <Text>Text</Text>
-      </SidebarDrawer>
     </>
   );
 };
