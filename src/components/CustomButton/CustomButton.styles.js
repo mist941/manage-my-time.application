@@ -9,6 +9,13 @@ export const CustomButtonStyles = StyleSheet.create({
     height: 56,
     borderRadius: 8
   },
+  form: {
+    ...commonStyles.primaryShadow,
+    backgroundColor: commonStyles.secondaryBackground,
+    height: 'auto',
+    paddingVertical: 14,
+    padding: 30
+  },
   primary: {
     backgroundColor: commonStyles.secondaryBackground,
     shadowColor: "#000",
@@ -32,6 +39,9 @@ export const CustomButtonStyles = StyleSheet.create({
   textPrimary: {
     color: '#fff',
     textTransform: 'uppercase'
+  },
+  textForm: {
+    color: '#fff',
   },
   textSecondary: {
     color: '#000',

@@ -1,22 +1,26 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import AppLayout from '../../layouts/AppLayout/AppLayout';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import {Text} from 'react-native';
 import AddButton from '../../components/AddButton/AddButton';
 import Preloader from '../../components/Preloader/Preloader';
 import ScrollListWrapper from '../../components/ScrollListWrapper/ScrollListWrapper';
+import BottomSheet from '../../components/BottomSheet/BottomSheet';
+import TaskForm from '../../forms/TaskForm/TaskForm';
 
 const TasksScreen = () => {
+  const RBSheetRef = useRef();
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    new Promise(resolve => {
-      setTimeout(() => resolve(), 2000);
-    }).then(() => setLoading(false));
+    setLoading(false);
   }, []);
 
-  const addNewTask = () => {};
+  const addNewTask = () => {
+  };
+
+  const openForm = () => RBSheetRef.current.open();
 
   if (loading) return <Preloader/>;
 
@@ -29,7 +33,10 @@ const TasksScreen = () => {
             <Text>task</Text>
           ))}
         </ScrollListWrapper>
-        <AddButton/>
+        <AddButton onClick={openForm}/>
+        <BottomSheet height={350} ref={RBSheetRef}>
+          <TaskForm submit={addNewTask}/>
+        </BottomSheet>
       </AppLayout>
     </>
   );

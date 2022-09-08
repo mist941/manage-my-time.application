@@ -6,6 +6,7 @@ export default {
   primaryTextColor: '#616161',
   textColor: '#000',
   secondaryTextColor: '#fff',
+  placeholderColor: '#aaa',
   primaryShadow: {
     backgroundColor: '#fff',
     shadowColor: 'rgba(23, 23, 23, 0.3)',
