@@ -7,6 +7,7 @@ import {TaskFormStyles} from './TaskForm.styles';
 import SelectField from '../../components/SelectField/SelectField';
 import services from '../../services';
 import CalendarStrip from 'react-native-calendar-strip';
+import DatePicker from '../../components/DayPicker/DatePicker';
 
 const TaskForm = ({submit}) => {
   const [categories, setCategories] = useState();
@@ -15,8 +16,8 @@ const TaskForm = ({submit}) => {
     initialValues: {
       name: '',
       category: [],
-      start_date: null,
-      end_date: null,
+      start_date: new Date(),
+      end_date: new Date(),
     },
     onSubmit: values => {
 
@@ -30,10 +31,6 @@ const TaskForm = ({submit}) => {
   }, []);
 
   const {handleSubmit, setFieldValue, values} = formik;
-
-  const datesBlacklistFunc = date => {
-    return date.isoWeekday() === 6;
-  }
 
   return (
     <View style={TaskFormStyles.form}>
@@ -52,14 +49,17 @@ const TaskForm = ({submit}) => {
         onChange={value => setFieldValue('category', value)}
         options={categories}
       />
-      <CalendarStrip
-        calendarAnimation={{type: 'sequence', duration: 30}}
-        style={{height: 70, width: 320}}
+      <DatePicker
+        styles={TaskFormStyles.fromField}
+        value={values.start_date}
+        onChange={value => {
+          setFieldValue('start_date', value);
+          setFieldValue('end_date', value);
+        }}
       />
       <CustomButton
         type="form"
         text="Create task"
-
         onPress={handleSubmit}
       />
     </View>

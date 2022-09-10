@@ -34,7 +34,7 @@ const TasksScreen = () => {
           ))}
         </ScrollListWrapper>
         <AddButton onClick={openForm}/>
-        <BottomSheet height={350} ref={RBSheetRef}>
+        <BottomSheet height={500} ref={RBSheetRef}>
           <TaskForm submit={addNewTask}/>
         </BottomSheet>
       </AppLayout>

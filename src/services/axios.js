@@ -10,7 +10,7 @@ axiosApiInstance.interceptors.request.use(
       config.headers['user'] = JSON.stringify(currentUser);
     }
     config.withCredentials = true;
-    config.baseURL = 'http://192.168.0.100:3005/v1'
+    config.baseURL = 'http://10.1.30.51:3005/v1'
     return config;
   },
   error => {
