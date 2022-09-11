@@ -33,6 +33,13 @@ export const CustomButtonStyles = StyleSheet.create({
     borderColor: '#999999',
     borderWidth: 2
   },
+  date_picker: {
+    borderStyle: 'solid',
+    borderColor: '#EFEFEF',
+    borderWidth: 2,
+    borderRadius: 10,
+    height:40
+  },
   buttonText: {
     fontSize: 16,
   },

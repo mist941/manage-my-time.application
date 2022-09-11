@@ -7,6 +7,8 @@ import Preloader from '../../components/Preloader/Preloader';
 import ScrollListWrapper from '../../components/ScrollListWrapper/ScrollListWrapper';
 import BottomSheet from '../../components/BottomSheet/BottomSheet';
 import TaskForm from '../../forms/TaskForm/TaskForm';
+import services from '../../services';
+import {taskTypes} from '../../helpers/tasksTypes';
 
 const TasksScreen = () => {
   const RBSheetRef = useRef();
@@ -14,10 +16,21 @@ const TasksScreen = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(false);
+    services.tasksServices.getTasks({type: taskTypes.planedTask}).then(res => {
+      if (res.data) {
+        setTasks(res.data);
+        setLoading(false);
+      }
+    });
   }, []);
 
-  const addNewTask = () => {
+  const addNewTask = params => {
+    services.tasksServices.createTask({...params, type: taskTypes.planedTask})
+      .then(res => {
+        if (res.data) {
+          console.log(res.data);
+        }
+      }).catch(error => console.log(error.response?.data.error))
   };
 
   const openForm = () => RBSheetRef.current.open();
@@ -27,14 +40,14 @@ const TasksScreen = () => {
   return (
     <>
       <AppLayout>
-        <PageHeader name="Tasks" count={0}/>
+        <PageHeader name="Tasks" count={tasks.length}/>
         <ScrollListWrapper>
           {tasks.map(task => (
             <Text>task</Text>
           ))}
         </ScrollListWrapper>
         <AddButton onClick={openForm}/>
-        <BottomSheet height={500} ref={RBSheetRef}>
+        <BottomSheet height={450} ref={RBSheetRef}>
           <TaskForm submit={addNewTask}/>
         </BottomSheet>
       </AppLayout>

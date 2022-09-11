@@ -8,5 +8,10 @@ export const TaskFormStyles = StyleSheet.create({
   },
   fromField: {
     marginBottom: 20,
+  },
+  formGroup: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 });

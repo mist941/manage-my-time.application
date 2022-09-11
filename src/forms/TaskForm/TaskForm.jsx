@@ -6,22 +6,26 @@ import InputField from '../../components/InputField/InputField';
 import {TaskFormStyles} from './TaskForm.styles';
 import SelectField from '../../components/SelectField/SelectField';
 import services from '../../services';
-import CalendarStrip from 'react-native-calendar-strip';
-import DatePicker from '../../components/DayPicker/DatePicker';
+import DayPicker from '../../components/DayPicker/DayPicker';
+import CustomDatePicker from '../../components/CustomDatePicker/CustomDatePicker';
+import moment from 'moment';
 
 const TaskForm = ({submit}) => {
-  const [categories, setCategories] = useState();
+  const [categories, setCategories] = useState([]);
 
   const formik = useFormik({
     initialValues: {
       name: '',
-      category: [],
+      category: null,
       start_date: new Date(),
       end_date: new Date(),
     },
-    onSubmit: values => {
-
-    },
+    onSubmit: values => submit({
+      name: values.name,
+      start_date: values.start_date,
+      end_date: values.end_date,
+      category_ids: values.category ? [values.category] : []
+    }),
   });
 
   useEffect(() => {
@@ -31,6 +35,32 @@ const TaskForm = ({submit}) => {
   }, []);
 
   const {handleSubmit, setFieldValue, values} = formik;
+
+  const getCorrectDate = (date, targetDate)=>{
+    const newDate = date;
+    newDate.day(targetDate.day());
+    newDate.month(targetDate.month());
+    newDate.year(targetDate.year());
+    return newDate;
+  }
+
+  const updateDate = (date, type, name) => {
+    let targetDate;
+    let currentStartDate = moment(values.start_date);
+    let currentEndDate = moment(values.end_date);
+
+    if (type === "day") {
+      targetDate = moment(date);
+      if (targetDate.isSameOrBefore(new Date())) return;
+      setFieldValue("start_date", getCorrectDate(currentStartDate, targetDate));
+      setFieldValue("end_date", getCorrectDate(currentEndDate, targetDate));
+    } else {
+      targetDate = moment(date.nativeEvent.timestamp);
+      if (name === "start_date" && targetDate.isSameOrAfter(values.end_date)) return;
+      if (name === "end_date" && targetDate.isSameOrBefore(values.start_date)) return;
+      setFieldValue(name, targetDate);
+    }
+  };
 
   return (
     <View style={TaskFormStyles.form}>
@@ -49,14 +79,23 @@ const TaskForm = ({submit}) => {
         onChange={value => setFieldValue('category', value)}
         options={categories}
       />
-      <DatePicker
+      <DayPicker
         styles={TaskFormStyles.fromField}
         value={values.start_date}
-        onChange={value => {
-          setFieldValue('start_date', value);
-          setFieldValue('end_date', value);
-        }}
+        onChange={value => updateDate(value, "day")}
       />
+      <View style={[TaskFormStyles.formGroup, TaskFormStyles.fromField]}>
+        <CustomDatePicker
+          value={values.start_date}
+          onChange={value => updateDate(value, "time", "start_date")}
+          label="Start time"
+        />
+        <CustomDatePicker
+          value={values.end_date}
+          onChange={value => updateDate(value, "time", "end_date")}
+          label="End time"
+        />
+      </View>
       <CustomButton
         type="form"
         text="Create task"
