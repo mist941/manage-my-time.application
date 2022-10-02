@@ -2,22 +2,32 @@ import React, {useState} from 'react';
 import {View} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import CustomButton from '../CustomButton/CustomButton';
-import {CustomDatePickerStyles} from './CustomDatePicker.styles';
 import moment from 'moment';
 
-const CustomDatePicker = ({value, onChange, label}) => {
+const CustomDatePicker = (
+  {
+    value,
+    onChange,
+    visibleType,
+    mode = "time",
+    width = "45%"
+  }
+) => {
   const [open, setOpen] = useState(false);
+  let result = moment(value).format('HH:mm');
+
+  if (visibleType === "day") result = moment(value).format('MMMM Do YYYY');
 
   return (
-    <View style={CustomDatePickerStyles.container}>
+    <View style={{width}}>
       <CustomButton
         type='date_picker'
-        text={moment(value).format('HH:mm')}
+        text={result}
         onPress={() => setOpen(true)}
       />
       {open && (
         <DateTimePicker
-          mode="time"
+          mode={mode}
           value={new Date(value)}
           onChange={date => {
             setOpen(false);

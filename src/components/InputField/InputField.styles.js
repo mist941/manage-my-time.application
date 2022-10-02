@@ -26,5 +26,12 @@ export const InputFieldStyles = StyleSheet.create({
     padding: 13,
     width: '100%',
     fontSize: 16
+  },
+  errText: {
+    color: commonStyles.errColor,
+  },
+  fieldErr:{
+    borderColor: commonStyles.errColor,
   }
+
 });

@@ -1,25 +1,35 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {useFormik} from 'formik';
 import {View} from 'react-native';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import InputField from '../../components/InputField/InputField';
 import {TaskFormStyles} from './TaskForm.styles';
 import SelectField from '../../components/SelectField/SelectField';
-import services from '../../services';
-import DayPicker from '../../components/DayPicker/DayPicker';
 import CustomDatePicker from '../../components/CustomDatePicker/CustomDatePicker';
 import moment from 'moment';
+import {object, string} from 'yup';
 
-const TaskForm = ({submit}) => {
-  const [categories, setCategories] = useState([]);
-
+const TaskForm = ({submit, categories, defaultValues}) => {
   const formik = useFormik({
     initialValues: {
-      name: '',
-      category: null,
-      start_date: new Date(),
-      end_date: new Date(),
+      name: defaultValues?.name || "",
+      category: defaultValues?.categories[0] ?
+        defaultValues?.categories[0]._id :
+        null,
+      start_date: defaultValues?.start_date ?
+        moment(defaultValues?.start_date) :
+        moment(new Date()),
+      end_date: defaultValues?.end_date ?
+        moment(defaultValues?.end_date) :
+        moment(new Date(new Date().getTime() + 60000)),
     },
+    validationSchema: object({
+      name: string()
+        .required('Please, enter a task name')
+        .max(50, 'Task name should be 50 characters or less'),
+      start_date: string()
+        .required("Start date is required").nullable(),
+    }),
     onSubmit: values => submit({
       name: values.name,
       start_date: values.start_date,
@@ -28,37 +38,27 @@ const TaskForm = ({submit}) => {
     }),
   });
 
-  useEffect(() => {
-    services.categoriesServices.getCategories().then(res => {
-      if (res.data) setCategories(res.data.map(i => ({label: i.name, value: i._id})));
-    })
-  }, []);
+  const {handleSubmit, setFieldValue, values, errors} = formik;
 
-  const {handleSubmit, setFieldValue, values} = formik;
-
-  const getCorrectDate = (date, targetDate)=>{
-    const newDate = date;
-    newDate.day(targetDate.day());
-    newDate.month(targetDate.month());
-    newDate.year(targetDate.year());
-    return newDate;
-  }
+  const updateDay = (data, targetDate) => {
+    return moment({
+      year: data.year(),
+      month: data.month(),
+      date: data.date(),
+      hour: targetDate.hour(),
+      minute: targetDate.minute(),
+      second: targetDate.second(),
+      millisecond: targetDate.millisecond(),
+    });
+  };
 
   const updateDate = (date, type, name) => {
-    let targetDate;
-    let currentStartDate = moment(values.start_date);
-    let currentEndDate = moment(values.end_date);
-
+    const preparedDate = moment(date.nativeEvent.timestamp);
     if (type === "day") {
-      targetDate = moment(date);
-      if (targetDate.isSameOrBefore(new Date())) return;
-      setFieldValue("start_date", getCorrectDate(currentStartDate, targetDate));
-      setFieldValue("end_date", getCorrectDate(currentEndDate, targetDate));
+      setFieldValue("start_date", updateDay(preparedDate, values.start_date));
+      setFieldValue("end_date", updateDay(preparedDate, values.end_date));
     } else {
-      targetDate = moment(date.nativeEvent.timestamp);
-      if (name === "start_date" && targetDate.isSameOrAfter(values.end_date)) return;
-      if (name === "end_date" && targetDate.isSameOrBefore(values.start_date)) return;
-      setFieldValue(name, targetDate);
+      setFieldValue(name, preparedDate);
     }
   };
 
@@ -70,6 +70,7 @@ const TaskForm = ({submit}) => {
         styles={TaskFormStyles.fromField}
         value={values.name}
         onChange={value => setFieldValue('name', value)}
+        error={errors.name}
       />
       <SelectField
         placeholder="Select category"
@@ -79,26 +80,28 @@ const TaskForm = ({submit}) => {
         onChange={value => setFieldValue('category', value)}
         options={categories}
       />
-      <DayPicker
-        styles={TaskFormStyles.fromField}
-        value={values.start_date}
-        onChange={value => updateDate(value, "day")}
-      />
+      <View style={TaskFormStyles.fromField}>
+        <CustomDatePicker
+          value={values.start_date}
+          onChange={value => updateDate(value, "day")}
+          visibleType='day'
+          width='100%'
+          mode='date'
+        />
+      </View>
       <View style={[TaskFormStyles.formGroup, TaskFormStyles.fromField]}>
         <CustomDatePicker
           value={values.start_date}
           onChange={value => updateDate(value, "time", "start_date")}
-          label="Start time"
         />
         <CustomDatePicker
           value={values.end_date}
           onChange={value => updateDate(value, "time", "end_date")}
-          label="End time"
         />
       </View>
       <CustomButton
         type="form"
-        text="Create task"
+        text={defaultValues?._id ? "Save task" : "Create task"}
         onPress={handleSubmit}
       />
     </View>

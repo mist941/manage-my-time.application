@@ -38,7 +38,7 @@ export const CustomButtonStyles = StyleSheet.create({
     borderColor: '#EFEFEF',
     borderWidth: 2,
     borderRadius: 10,
-    height:40
+    height: 40
   },
   buttonText: {
     fontSize: 16,

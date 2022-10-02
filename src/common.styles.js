@@ -3,6 +3,7 @@ export default {
   primaryBackground: '#fff',
   secondaryBackground: '#8811FF',
   primaryOpacityBackground: 'rgba(136, 17, 255, 0.14)',
+  errColor: '#FF8181',
   primaryTextColor: '#616161',
   textColor: '#000',
   secondaryTextColor: '#fff',

@@ -15,9 +15,16 @@ const AppLayout = ({children, outsidePress}) => {
         height: Platform.OS === 'ios' ? '100%' : windowHeight
       }
     ]}>
-      <Pressable onPress={outsidePress} style={AppLayoutStyles.content}>
-        {children}
-      </Pressable>
+      {outsidePress && (
+        <Pressable onPress={outsidePress} style={AppLayoutStyles.content}>
+          {children}
+        </Pressable>
+      )}
+      {!outsidePress && (
+        <View style={AppLayoutStyles.content}>
+          {children}
+        </View>
+      )}
       <Navigation/>
     </View>
   );

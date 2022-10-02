@@ -8,6 +8,7 @@ export const TaskFormStyles = StyleSheet.create({
   },
   fromField: {
     marginBottom: 20,
+    width: '100%'
   },
   formGroup: {
     width: '100%',

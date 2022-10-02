@@ -10,20 +10,22 @@ const InputField = (
     value = "",
     styles,
     onChange,
+    error
   }
 ) => {
   return (
     <View style={[InputFieldStyles.fieldWrap, styles]}>
       <View style={InputFieldStyles.label}>
-        <Text style={InputFieldStyles.labelText}>{label}</Text>
+        <Text style={[InputFieldStyles.labelText, error && InputFieldStyles.errText]}>{label}</Text>
       </View>
       <TextInput
         value={value}
         placeholderTextColor={commonStyles.placeholderColor}
         placeholder={placeholder}
         onChangeText={onChange}
-        style={InputFieldStyles.field}
+        style={[InputFieldStyles.field, error && InputFieldStyles.fieldErr]}
       />
+      {error && <Text style={InputFieldStyles.errText}>{error}</Text>}
     </View>
   );
 };
