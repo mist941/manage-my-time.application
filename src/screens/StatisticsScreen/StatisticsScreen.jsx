@@ -1,11 +1,11 @@
 import React from 'react';
 import AppLayout from '../../layouts/AppLayout/AppLayout';
-import {Text} from 'react-native';
+import PageHeader from '../../components/PageHeader/PageHeader';
 
 const StatisticsScreen = () => {
   return (
     <AppLayout>
-      <Text>Statistics</Text>
+      <PageHeader name="Statistics"/>
     </AppLayout>
   );
 };
