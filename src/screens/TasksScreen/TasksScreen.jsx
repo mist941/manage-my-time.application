@@ -11,7 +11,7 @@ import {taskTypes} from '../../helpers/tasksTypes';
 import SingleTask from './components/SingleTask/SingleTask';
 import {useDidUpdate} from '../../hooks/useDidUpdate';
 
-const TasksScreen = () => {
+const TasksScreen = ({navigation}) => {
   const [categories, setCategories] = useState([]);
   const RBSheetRef = useRef();
   const [tasks, setTasks] = useState([]);
@@ -38,10 +38,12 @@ const TasksScreen = () => {
   useDidUpdate(() => load(), [page]);
 
   useEffect(() => {
-    services.categoriesServices.getCategories().then(res => {
-      if (res.data) setCategories(res.data.map(i => ({label: i.name, value: i._id})));
-    })
-  }, []);
+    return navigation.addListener('focus', () => {
+      services.categoriesServices.getCategories().then(res => {
+        if (res.data) setCategories(res.data.map(i => ({label: i.name, value: i._id})));
+      })
+    });
+  }, [navigation]);
 
   const onSubmitForm = params => {
     if (currentTask) {
