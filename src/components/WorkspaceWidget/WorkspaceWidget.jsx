@@ -1,7 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 
-const WorkspaceWidget = () => {
+const WorkspaceWidget = ({tasks}) => {
   return (
     <View>
 
