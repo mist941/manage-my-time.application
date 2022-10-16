@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import AppLayout from '../../layouts/AppLayout/AppLayout';
-import {TaskFormStyles} from '../../forms/TaskForm/TaskForm.styles';
 import DayPicker from '../../components/DayPicker/DayPicker';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import services from '../../services';
 import Preloader from '../../components/Preloader/Preloader';
-import WorkspaceWidget from '../../components/WorkspaceWidget/WorkspaceWidget';
+import WorkspaceWidget from './components/WorkspaceWidget/WorkspaceWidget';
+import {DashboardScreenStyles} from './DashboardScreen.styles';
 
 const DashboardScreen = ({navigation}) => {
   const [selectedDate, setSelectDate] = useState(new Date());
@@ -37,7 +37,7 @@ const DashboardScreen = ({navigation}) => {
       <PageHeader name="Dashboard"/>
       <WorkspaceWidget tasks={tasks}/>
       <DayPicker
-        styles={TaskFormStyles.fromField}
+        styles={DashboardScreenStyles.dayPicker}
         value={selectedDate}
         onChange={date => setSelectDate(new Date(date))}
       />

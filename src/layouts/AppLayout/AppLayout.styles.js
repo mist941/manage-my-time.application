@@ -16,6 +16,8 @@ export const AppLayoutStyles = StyleSheet.create({
     marginTop: 20,
     paddingLeft: 15,
     paddingRight: 15,
+    display: 'flex',
+    alignItems: 'center',
     flex: 1,
   }
 });

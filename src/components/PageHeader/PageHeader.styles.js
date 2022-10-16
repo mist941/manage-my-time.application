@@ -6,7 +6,8 @@ export const PageHeaderStyles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 20,
+    width: '100%',
+    marginBottom: 15,
   },
   text: {
     color: commonStyles.textColor,

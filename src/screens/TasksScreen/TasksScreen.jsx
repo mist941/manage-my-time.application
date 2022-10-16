@@ -10,6 +10,7 @@ import services from '../../services';
 import {taskTypes} from '../../helpers/tasksTypes';
 import SingleTask from './components/SingleTask/SingleTask';
 import {useDidUpdate} from '../../hooks/useDidUpdate';
+import {TasksScreenStyles} from './TasksScreen.styles';
 
 const TasksScreen = ({navigation}) => {
   const [categories, setCategories] = useState([]);
@@ -94,13 +95,11 @@ const TasksScreen = ({navigation}) => {
   return (
     <AppLayout>
       <PageHeader name="Tasks" count={tasks.length}/>
-      <View style={{flex: 1}}>
+      <View style={TasksScreenStyles.flatListWrap}>
         <FlatList
           data={tasks}
           keyExtractor={item => item._id}
-          contentContainerStyle={{
-            flexGrow: 1,
-          }}
+          contentContainerStyle={TasksScreenStyles.flatListContainer}
           onEndReached={({distanceFromEnd}) => {
             if (distanceFromEnd < 0) return;
             setTimeout(() => setPage(prevState => prevState + 1), 300);
