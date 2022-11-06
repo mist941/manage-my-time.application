@@ -10,17 +10,4 @@ export const WorkspaceWidgetStyles = StyleSheet.create({
     borderRadius: 10,
     padding: 5,
   },
-  hourSector: {
-    height: 50
-  },
-  line: {
-    height: 1,
-    width: '100%',
-    backgroundColor: '#EFEFEF'
-  },
-  hour: {
-    color: '#aaa',
-    fontSize: 12,
-    fontWeight: '400'
-  }
 });

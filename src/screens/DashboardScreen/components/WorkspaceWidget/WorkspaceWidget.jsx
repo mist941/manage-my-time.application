@@ -1,41 +1,33 @@
-import React, {useState} from 'react';
-import {Pressable, ScrollView, Text, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View} from 'react-native';
 import {WorkspaceWidgetStyles} from "./WorkspaceWidget.styles";
+import WorkspaceWidgetHours from '../WorkspaceWidgetHours/WorkspaceWidgetHours';
+import WorkspaceWidgetHourDetails from '../WorkspaceWidgetHourDetails/WorkspaceWidgetHourDetails';
 
-const WorkspaceWidget = ({tasks}) => {
+const WorkspaceWidget = ({tasks, selectedDate,}) => {
   const [currentHourFullView, setCurrentHourFullView] = useState(null);
-  const hours = Array.from(Array(24));
 
   const updateFullView = hour => {
     if (currentHourFullView === hour) setCurrentHourFullView(null);
-    setCurrentHourFullView(hour);
+    else setCurrentHourFullView(hour);
   }
+
+  useEffect(() => updateFullView(currentHourFullView), [selectedDate]);
 
   return (
     <View style={WorkspaceWidgetStyles.widgetWrap}>
       {currentHourFullView !== null && (
-        <Text>
-          {currentHourFullView}
-        </Text>
+        <WorkspaceWidgetHourDetails
+          selectedDate={selectedDate}
+          currentHourFullView={currentHourFullView}
+          openHours={updateFullView}
+        />
       )}
       {currentHourFullView === null && (
-        <ScrollView>
-          {hours.map((_, index) => {
-            if (index <= 12) return (
-              <Pressable key={index} style={[WorkspaceWidgetStyles.hourSector]} onPress={() => updateFullView(index)}>
-                {index !== 0 && <View style={WorkspaceWidgetStyles.line}></View>}
-                <Text style={WorkspaceWidgetStyles.hour}>{index} AM</Text>
-              </Pressable>
-            );
-            return (
-              <Pressable key={index} style={WorkspaceWidgetStyles.hourSector} onPress={() => updateFullView(index)}>
-                <View style={WorkspaceWidgetStyles.line}></View>
-                <Text style={WorkspaceWidgetStyles.hour}>{index} PM</Text>
-              </Pressable>
-            );
-          })}
-        </ScrollView>
-      )}
+        <WorkspaceWidgetHours
+          updateFullView={updateFullView}
+          tasks={tasks}
+        />)}
     </View>
   );
 };

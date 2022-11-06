@@ -16,6 +16,7 @@ const DashboardScreen = ({navigation}) => {
     const queryParams = {
       start_date: selectedDate,
     };
+
     services.tasksServices.getTasks(queryParams).then(res => {
       if (res.data) {
         setTasks(res.data);
@@ -35,7 +36,10 @@ const DashboardScreen = ({navigation}) => {
   return (
     <AppLayout>
       <PageHeader name="Dashboard"/>
-      <WorkspaceWidget tasks={tasks}/>
+      <WorkspaceWidget
+        tasks={tasks}
+        selectedDate={selectedDate}
+      />
       <DayPicker
         styles={DashboardScreenStyles.dayPicker}
         value={selectedDate}
