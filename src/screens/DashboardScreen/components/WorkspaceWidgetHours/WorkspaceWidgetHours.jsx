@@ -1,15 +1,29 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Pressable, ScrollView, Text, View} from 'react-native';
 import {WorkspaceWidgetHoursStyles} from './WorkspaceWidgetHours.styles';
 import {Ionicons} from '@expo/vector-icons';
 import WorkspaceWidgetTask from '../WorkspaceWidgetTask/WorkspaceWidgetTask';
+import {getMinutesFromStartDay} from '../../../../helpers/getMinutesFromStartDay';
 
 const WorkspaceWidgetHours = ({updateFullView, tasks}) => {
   const hours = Array.from(Array(24));
   const minuteInPx = ((50 * 24) / (24 * 60)).toFixed(3);
+  const [currentDatePosition, setCurrentDatePosition] = useState(getMinutesFromStartDay(new Date()) * minuteInPx)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentDatePosition(getMinutesFromStartDay(new Date()) * minuteInPx)
+    }, 1000 * 60);
+
+    return () => clearInterval(interval);
+
+  }, [])
 
   return (
     <ScrollView>
+      <View style={[WorkspaceWidgetHoursStyles.currentTimeLine, {top: currentDatePosition}]}>
+        <View style={WorkspaceWidgetHoursStyles.circle}/>
+      </View>
       <View style={WorkspaceWidgetHoursStyles.container}>
         {tasks.map(task => (
           <WorkspaceWidgetTask

@@ -10,7 +10,7 @@ export const WorkspaceWidgetTaskStyles = StyleSheet.create({
     width: '84%',
     position: 'absolute',
     right: 10,
-    zIndex: 1,
+    zIndex: 2,
     padding: 5,
     flexDirection: 'column',
     justifyContent: 'space-between'
