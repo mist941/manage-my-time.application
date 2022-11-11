@@ -7,18 +7,26 @@ import AuthProvider from './src/contexts/AuthContext';
 import Router from './src/router/Router';
 import commonStyles from './src/common.styles';
 import * as Notifications from 'expo-notifications';
+import {useEffect, useRef} from 'react';
+import {registerPushNotificationsToken} from './src/helpers/registerPushNotificationsToken';
 
 WebBrowser.maybeCompleteAuthSession();
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowAlert: true,
-    shouldPlaySound: false,
-    shouldSetBadge: false,
+    shouldPlaySound: true,
+    shouldSetBadge: true,
   }),
 });
 
 export default function App() {
+
+  useEffect(() => {
+    registerPushNotificationsToken().then(token => {
+      console.log(token);
+    });
+  }, []);
   return (
     <I18nextProvider i18n={i18n}>
       <SafeAreaView style={styles.container}>

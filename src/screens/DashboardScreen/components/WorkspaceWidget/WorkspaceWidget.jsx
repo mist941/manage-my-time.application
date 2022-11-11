@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
-import {WorkspaceWidgetStyles} from "./WorkspaceWidget.styles";
+import {WorkspaceWidgetStyles} from './WorkspaceWidget.styles';
 import WorkspaceWidgetHours from '../WorkspaceWidgetHours/WorkspaceWidgetHours';
 import WorkspaceWidgetHourDetails from '../WorkspaceWidgetHourDetails/WorkspaceWidgetHourDetails';
 
-const WorkspaceWidget = ({tasks, selectedDate,}) => {
+const WorkspaceWidget = ({tasks, selectedDate}) => {
   const [currentHourFullView, setCurrentHourFullView] = useState(null);
 
   const updateFullView = hour => {
@@ -26,6 +26,7 @@ const WorkspaceWidget = ({tasks, selectedDate,}) => {
       {currentHourFullView === null && (
         <WorkspaceWidgetHours
           updateFullView={updateFullView}
+          selectedDate={selectedDate}
           tasks={tasks}
         />)}
     </View>

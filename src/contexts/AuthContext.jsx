@@ -2,6 +2,7 @@ import {createContext, useEffect, useState} from "react";
 import * as Google from "expo-auth-session/providers/google";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import services from '../services';
+import {registerPushNotificationsToken} from '../helpers/registerPushNotificationsToken';
 
 export const AuthContext = createContext();
 
@@ -33,10 +34,12 @@ const AuthProvider = ({children}) => {
   };
 
   const signIn = userParams => {
-    services.authServices.signIn(userParams).then(res => {
-      const {email, google_id, stand_alone_key} = res.data;
-      putUser({email, google_id, stand_alone_key});
-    });
+    registerPushNotificationsToken().then(token => {
+      services.authServices.signIn({...userParams, push_notification_token: token}).then(res => {
+        const {email, google_id, stand_alone_key} = res.data;
+        putUser({email, google_id, stand_alone_key});
+      });
+    })
   }
 
   return (
