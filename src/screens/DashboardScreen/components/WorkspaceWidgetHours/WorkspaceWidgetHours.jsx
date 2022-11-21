@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {Pressable, ScrollView, Text, View} from 'react-native';
 import {WorkspaceWidgetHoursStyles} from './WorkspaceWidgetHours.styles';
-import {Ionicons} from '@expo/vector-icons';
 import WorkspaceWidgetTask from '../WorkspaceWidgetTask/WorkspaceWidgetTask';
 import {getMinutesFromStartDay} from '../../../../helpers/getMinutesFromStartDay';
 import moment from 'moment';
+import {WorkspaceWidgetTaskStyles} from '../WorkspaceWidgetTask/WorkspaceWidgetTask.styles';
 
 const WorkspaceWidgetHours = ({updateFullView, tasks, selectedDate}) => {
   const hours = Array.from(Array(24));
@@ -18,8 +18,29 @@ const WorkspaceWidgetHours = ({updateFullView, tasks, selectedDate}) => {
     }, 1000 * 60);
 
     return () => clearInterval(interval);
-
   }, [])
+
+  const getTasksByHour = hour => tasks.filter(task => hour === new Date(task.start_date).getHours());
+
+  const renderHourBlock = hour => {
+    const tasks = getTasksByHour(hour);
+    return (
+      <View key={hour} style={WorkspaceWidgetHoursStyles.hourSector}>
+        {hour !== 0 && <View style={WorkspaceWidgetHoursStyles.line}></View>}
+        <Text style={WorkspaceWidgetHoursStyles.hour}>{hour} {hour <= 12 ? "AM" : "PM"}</Text>
+        {tasks.length > 0 && (
+          <Pressable
+            style={WorkspaceWidgetHoursStyles.details}
+            onPress={() => updateFullView(hour)}
+          >
+            <View style={WorkspaceWidgetHoursStyles.hourDetails}>
+              <Text style={WorkspaceWidgetHoursStyles.tasksCount}>{tasks.length}</Text>
+            </View>
+          </Pressable>
+        )}
+      </View>
+    )
+  }
 
   return (
     <ScrollView>
@@ -36,26 +57,7 @@ const WorkspaceWidgetHours = ({updateFullView, tasks, selectedDate}) => {
             minuteInPx={minuteInPx}
           />
         ))}
-        {hours.map((_, index) => {
-          if (index <= 12) return (
-            <View key={index} style={WorkspaceWidgetHoursStyles.hourSector}>
-              {index !== 0 && <View style={WorkspaceWidgetHoursStyles.line}></View>}
-              <Text style={WorkspaceWidgetHoursStyles.hour}>{index} AM</Text>
-              <Pressable style={WorkspaceWidgetHoursStyles.details} key={index} onPress={() => updateFullView(index)}>
-                <Ionicons name="list-circle-outline" size={25} color="#86868626"/>
-              </Pressable>
-            </View>
-          );
-          return (
-            <View key={index} style={WorkspaceWidgetHoursStyles.hourSector}>
-              <View style={WorkspaceWidgetHoursStyles.line}></View>
-              <Text style={WorkspaceWidgetHoursStyles.hour}>{index} PM</Text>
-              <Pressable style={WorkspaceWidgetHoursStyles.details} key={index} onPress={() => updateFullView(index)}>
-                <Ionicons name="list-circle-outline" size={25} color="#86868626"/>
-              </Pressable>
-            </View>
-          );
-        })}
+        {hours.map((_, index) => renderHourBlock(index))}
       </View>
     </ScrollView>
   );

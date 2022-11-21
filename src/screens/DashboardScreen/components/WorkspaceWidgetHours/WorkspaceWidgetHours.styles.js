@@ -24,7 +24,7 @@ export const WorkspaceWidgetHoursStyles = StyleSheet.create({
   },
   currentTimeLine: {
     position: 'absolute',
-    width: '89%',
+    width: '87%',
     height: 3,
     backgroundColor: commonStyles.secondaryBackground,
     right: 0,
@@ -39,5 +39,18 @@ export const WorkspaceWidgetHoursStyles = StyleSheet.create({
     borderRadius: 50,
     top: -2.5,
     right: 0
+  },
+  hourDetails: {
+    borderColor: commonStyles.secondaryBackground + "75",
+    borderRadius: 50,
+    borderWidth: 1,
+    width: 25,
+    height: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  tasksCount: {
+    color: '#D3B8E8',
+    fontWeight: '700'
   }
 });

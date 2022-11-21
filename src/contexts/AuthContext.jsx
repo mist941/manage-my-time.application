@@ -36,10 +36,9 @@ const AuthProvider = ({children}) => {
   const signIn = userParams => {
     registerPushNotificationsToken().then(token => {
       services.authServices.signIn({...userParams, push_notification_token: token}).then(res => {
-        const {email, google_id, stand_alone_key} = res.data;
-        putUser({email, google_id, stand_alone_key});
+        putUser(res.data);
       });
-    })
+    });
   }
 
   return (

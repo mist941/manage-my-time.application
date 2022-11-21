@@ -9,6 +9,8 @@ const WorkspaceWidgetTask = ({data, minuteInPx}) => {
   let startPosition = getMinutesFromStartDay(new Date(data.start_date)) * minuteInPx;
   let endPosition = getMinutesFromStartDay(new Date(data.end_date)) * minuteInPx;
 
+  if (endPosition - startPosition < 40) return null;
+
   return (
     <View style={[
       WorkspaceWidgetTaskStyles.taskWrap,
@@ -20,7 +22,7 @@ const WorkspaceWidgetTask = ({data, minuteInPx}) => {
       <View style={WorkspaceWidgetTaskStyles.header}>
         <Text style={WorkspaceWidgetTaskStyles.name}>{data.name}</Text>
       </View>
-      {endPosition - startPosition >= 50 && (
+      {endPosition - startPosition >= 60 && (
         <View style={WorkspaceWidgetTaskStyles.controls}>
           <Pressable style={WorkspaceWidgetTaskStyles.button}>
             <Ionicons name="play" size={24} color={commonStyles.secondaryBackground}/>

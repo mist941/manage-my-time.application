@@ -28,14 +28,6 @@ const LanguageButtonsGroup = () => {
           }}
         />
       </Pressable>
-      <Pressable onPress={() => changeLanguage('ru')}>
-        <Image
-          style={[LanguageButtonsGroupStyles.language, LanguageButtonsGroupStyles.last]}
-          source={{
-            uri: Asset.fromModule(require('../../../../../assets/images/russian.png')).uri,
-          }}
-        />
-      </Pressable>
     </View>
   );
 };

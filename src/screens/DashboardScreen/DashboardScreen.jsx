@@ -26,7 +26,10 @@ const DashboardScreen = ({navigation}) => {
   }
 
   useEffect(() => {
-    return navigation.addListener('focus', () => load());
+    return navigation.addListener('focus', () => {
+      setSelectDate(new Date());
+      load();
+    });
   }, [navigation]);
 
   useEffect(() => load(), [selectedDate]);
