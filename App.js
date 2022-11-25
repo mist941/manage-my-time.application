@@ -3,11 +3,11 @@ import {StatusBar} from 'expo-status-bar';
 import {I18nextProvider} from 'react-i18next';
 import i18n from './src/i18n';
 import * as WebBrowser from 'expo-web-browser';
-import AuthProvider, {AuthContext} from './src/contexts/AuthContext';
+import AuthProvider from './src/contexts/AuthContext';
 import Router from './src/router/Router';
 import commonStyles from './src/common.styles';
 import * as Notifications from 'expo-notifications';
-import {useContext, useEffect} from 'react';
+import {useEffect} from 'react';
 import {registerPushNotificationsToken} from './src/helpers/registerPushNotificationsToken';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import services from './src/services';
@@ -25,7 +25,6 @@ Notifications.setNotificationHandler({
 export default function App() {
 
   const updatePushToken = async () => {
-    //will be deleted
     let user = await AsyncStorage.getItem('@logged_user');
     if (user) {
       user = JSON.parse(user);
