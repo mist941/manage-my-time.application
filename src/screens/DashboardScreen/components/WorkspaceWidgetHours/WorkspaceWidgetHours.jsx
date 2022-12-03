@@ -4,7 +4,6 @@ import {WorkspaceWidgetHoursStyles} from './WorkspaceWidgetHours.styles';
 import WorkspaceWidgetTask from '../WorkspaceWidgetTask/WorkspaceWidgetTask';
 import {getMinutesFromStartDay} from '../../../../helpers/getMinutesFromStartDay';
 import moment from 'moment';
-import {WorkspaceWidgetTaskStyles} from '../WorkspaceWidgetTask/WorkspaceWidgetTask.styles';
 
 const WorkspaceWidgetHours = ({updateFullView, tasks, selectedDate}) => {
   const hours = Array.from(Array(24));

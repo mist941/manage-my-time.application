@@ -58,6 +58,8 @@ const TaskForm = ({submit, categories, defaultValues}) => {
       setFieldValue("start_date", updateDay(preparedDate, values.start_date));
       setFieldValue("end_date", updateDay(preparedDate, values.end_date));
     } else {
+      if (name === "start_date" && preparedDate.isSameOrAfter(values.end_date)) return;
+      if (name === "end_date" && preparedDate.isSameOrBefore(values.start_date)) return;
       setFieldValue(name, preparedDate);
     }
   };
