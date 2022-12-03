@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, TextInput, View} from 'react-native';
 import {InputFieldStyles} from './InputField.styles';
 import commonStyles from '../../common.styles';
+import Error from '../Error/Error';
 
 const InputField = (
   {
@@ -25,7 +26,7 @@ const InputField = (
         onChangeText={onChange}
         style={[InputFieldStyles.field, error && InputFieldStyles.fieldErr]}
       />
-      {error && <Text style={InputFieldStyles.errText}>{error}</Text>}
+      {error && <Error error={error}/>}
     </View>
   );
 };

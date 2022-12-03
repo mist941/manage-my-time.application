@@ -8,8 +8,10 @@ import SelectField from '../../components/SelectField/SelectField';
 import CustomDatePicker from '../../components/CustomDatePicker/CustomDatePicker';
 import moment from 'moment';
 import {object, string} from 'yup';
+import {constants} from './constants';
 
 const TaskForm = ({submit, categories, defaultValues}) => {
+
   const formik = useFormik({
     initialValues: {
       name: defaultValues?.name || "",
@@ -35,7 +37,7 @@ const TaskForm = ({submit, categories, defaultValues}) => {
       start_date: values.start_date,
       end_date: values.end_date,
       category_ids: values.category ? [values.category] : []
-    }),
+    })
   });
 
   const {handleSubmit, setFieldValue, values, errors} = formik;
@@ -54,12 +56,19 @@ const TaskForm = ({submit, categories, defaultValues}) => {
 
   const updateDate = (date, type, name) => {
     const preparedDate = moment(date.nativeEvent.timestamp);
+    if (preparedDate.isSameOrBefore(new Date())) return;
     if (type === "day") {
-      setFieldValue("start_date", updateDay(preparedDate, values.start_date));
-      setFieldValue("end_date", updateDay(preparedDate, values.end_date));
+      setFieldValue(constants.startDate, updateDay(preparedDate, values.start_date));
+      setFieldValue(constants.endDate, updateDay(preparedDate, values.end_date));
     } else {
-      if (name === "start_date" && preparedDate.isSameOrAfter(values.end_date)) return;
-      if (name === "end_date" && preparedDate.isSameOrBefore(values.start_date)) return;
+      if (name === constants.startDate && preparedDate.isSameOrAfter(values.end_date)) {
+        const newEndDate = moment(preparedDate).add(1, "m");
+        setFieldValue(constants.endDate, newEndDate);
+      }
+      if (name === constants.endDate && preparedDate.isSameOrBefore(values.start_date)) {
+        const newStartDate = moment(preparedDate).subtract(1, "m");
+        setFieldValue(constants.startDate, newStartDate);
+      }
       setFieldValue(name, preparedDate);
     }
   };
@@ -94,11 +103,11 @@ const TaskForm = ({submit, categories, defaultValues}) => {
       <View style={[TaskFormStyles.formGroup, TaskFormStyles.fromField]}>
         <CustomDatePicker
           value={values.start_date}
-          onChange={value => updateDate(value, "time", "start_date")}
+          onChange={value => updateDate(value, "time", constants.startDate)}
         />
         <CustomDatePicker
           value={values.end_date}
-          onChange={value => updateDate(value, "time", "end_date")}
+          onChange={value => updateDate(value, "time", constants.endDate)}
         />
       </View>
       <CustomButton

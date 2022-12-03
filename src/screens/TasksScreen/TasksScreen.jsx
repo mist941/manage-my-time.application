@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import AppLayout from '../../layouts/AppLayout/AppLayout';
 import PageHeader from '../../components/PageHeader/PageHeader';
-import {FlatList, View} from 'react-native';
+import {Alert, FlatList, View} from 'react-native';
 import AddButton from '../../components/AddButton/AddButton';
 import Preloader from '../../components/Preloader/Preloader';
 import BottomSheet from '../../components/BottomSheet/BottomSheet';
@@ -54,7 +54,8 @@ const TasksScreen = ({navigation}) => {
           RBSheetRef.current.close();
           setCurrentTask(null);
         }
-      });
+      })
+        .catch(err => Alert.alert(err.response.data?.message || "Something went wrong. Please, try again."));
     } else {
       services.tasksServices.createTask({...params, type: taskTypes.planedTask})
         .then(res => {
@@ -62,7 +63,8 @@ const TasksScreen = ({navigation}) => {
             setTasks(prevState => [res.data, ...prevState]);
             RBSheetRef.current.close();
           }
-        });
+        })
+        .catch(err => Alert.alert(err.response.data?.message || "Something went wrong. Please, try again."));
     }
   };
 
