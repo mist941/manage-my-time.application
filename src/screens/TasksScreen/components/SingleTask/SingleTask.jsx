@@ -7,6 +7,27 @@ import {colorsList} from '../../../../helpers/colorsList';
 import RunIcon from '../../../../../assets/icons/RunIcon';
 import DeleteIcon from '../../../../../assets/icons/DeleteIcon';
 import EditIcon from '../../../../../assets/icons/EditIcon';
+import * as BackgroundFetch from 'expo-background-fetch';
+import * as TaskManager from 'expo-task-manager';
+
+const BACKGROUND_FETCH_TASK = 'background-location-task';
+
+TaskManager.defineTask(BACKGROUND_FETCH_TASK, async () => {
+  const now = Date.now();
+
+  console.log(`Got background fetch call at date: ${new Date(now).toISOString()}`);
+
+  return BackgroundFetch.BackgroundFetchResult.NewData;
+});
+
+async function registerBackgroundFetchAsync() {
+  return BackgroundFetch.registerTaskAsync(BACKGROUND_FETCH_TASK, {
+    minimumInterval: 1,
+    stopOnTerminate: false,
+    startOnBoot: true,
+  });
+}
+
 
 const SingleTask = ({data, runTask, editTask, deleteTask}) => {
 
@@ -35,7 +56,7 @@ const SingleTask = ({data, runTask, editTask, deleteTask}) => {
         </View>
         <View style={SingleTaskStyles.actions}>
           <Pressable
-            onPress={runTask}
+            onPress={registerBackgroundFetchAsync}
             style={SingleTaskStyles.action}
           >
             <RunIcon/>
