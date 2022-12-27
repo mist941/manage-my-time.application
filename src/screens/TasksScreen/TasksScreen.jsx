@@ -69,11 +69,6 @@ const TasksScreen = ({navigation}) => {
   };
 
   const openForm = () => RBSheetRef.current.open();
-
-  const runTask = () => {
-    console.log("Run");
-  };
-
   const editTask = data => {
     setCurrentTask(data);
     openForm();
@@ -110,7 +105,6 @@ const TasksScreen = ({navigation}) => {
             <SingleTask
               key={item._id}
               data={item}
-              runTask={runTask}
               editTask={editTask}
               deleteTask={deleteTask}
             />

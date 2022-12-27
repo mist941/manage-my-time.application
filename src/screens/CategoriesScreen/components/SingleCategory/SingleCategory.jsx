@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Animated, Pressable, TextInput, View} from 'react-native';
+import {Alert, Animated, Pressable, TextInput, View} from 'react-native';
 import {SingleCategoryStyles} from './SingleCategory.styles';
 import {colorsList} from '../../../../helpers/colorsList';
 import {Ionicons} from '@expo/vector-icons';
@@ -21,7 +21,21 @@ const SingleCategory = ({category, isEdit, setEdit, deleteCategory, changeCatego
     if (isEdit) inputRef.current.focus();
   }, [isEdit]);
 
-  const onDelete = () => deleteCategory(category._id);
+  const deleteConfirm = () => {
+    Alert.alert(
+      'Delete category',
+      'Are you sure you want to delete this category?',
+      [
+        {text: 'Yes', onPress: () => deleteCategory(category._id)},
+        {
+          text: 'No',
+          style: 'cancel',
+        },
+      ],
+      {cancelable: false}
+    );
+  };
+
 
   const changeName = () => currentName.length ?
     changeCategory(category._id, {name: currentName}) :
@@ -48,7 +62,7 @@ const SingleCategory = ({category, isEdit, setEdit, deleteCategory, changeCatego
           onChangeText={setCurrentName}
           value={currentName}
         />
-        <Pressable style={SingleCategoryStyles.deleteBtn} onPress={onDelete}>
+        <Pressable style={SingleCategoryStyles.deleteBtn} onPress={deleteConfirm}>
           <Ionicons name="close-outline" size={20} color="black"/>
         </Pressable>
       </Animated.View>

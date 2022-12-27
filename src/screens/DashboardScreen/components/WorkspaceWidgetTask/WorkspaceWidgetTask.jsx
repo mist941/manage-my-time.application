@@ -25,7 +25,7 @@ const WorkspaceWidgetTask = ({data, minuteInPx}) => {
       {endPosition - startPosition >= 60 && (
         <View style={WorkspaceWidgetTaskStyles.controls}>
           <Pressable style={WorkspaceWidgetTaskStyles.button}>
-            <Ionicons name="play" size={24} color={commonStyles.secondaryBackground}/>
+            <Ionicons name="checkmark-done-sharp" size={24} color={commonStyles.secondaryBackground}/>
           </Pressable>
           <Pressable
             style={[
@@ -33,7 +33,7 @@ const WorkspaceWidgetTask = ({data, minuteInPx}) => {
               WorkspaceWidgetTaskStyles.rightBtn
             ]}
           >
-            <Ionicons name="trash" size={24} color={commonStyles.secondaryBackground}/>
+            <Ionicons name="close" size={24} color={commonStyles.secondaryBackground}/>
           </Pressable>
         </View>
       )}

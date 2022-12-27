@@ -11,7 +11,6 @@ import {useEffect} from 'react';
 import {registerPushNotificationsToken} from './src/helpers/registerPushNotificationsToken';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import services from './src/services';
-import BackgroundFetchScreen from './src/Task';
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -44,7 +43,7 @@ export default function App() {
       <SafeAreaView style={styles.container}>
         <StatusBar backgroundColor={commonStyles.backgroundApp}/>
         <AuthProvider>
-          <BackgroundFetchScreen/>
+          <Router/>
         </AuthProvider>
       </SafeAreaView>
     </I18nextProvider>

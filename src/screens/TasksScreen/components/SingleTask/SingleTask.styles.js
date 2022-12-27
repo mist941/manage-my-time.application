@@ -32,12 +32,13 @@ export const SingleTaskStyles = StyleSheet.create({
     flexDirection: 'row',
     padding: 2,
     justifyContent: 'center',
+    alignItems: 'center',
     borderRadius: 5,
   },
   categoryName: {
-    color: '#8811FF',
     fontWeight: '400',
     fontSize: 12,
+    marginLeft: 2
   },
   actions: {
     flexDirection: 'row',
