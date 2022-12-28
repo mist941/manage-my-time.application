@@ -25,7 +25,7 @@ const SingleTask = ({data, editTask, deleteTask}) => {
       { cancelable: false }
     );
   };
-  console.log(data);
+
   return (
     <View style={SingleTaskStyles.wrap}>
       <View style={SingleTaskStyles.header}>

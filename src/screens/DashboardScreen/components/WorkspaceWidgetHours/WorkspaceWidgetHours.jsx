@@ -5,7 +5,7 @@ import WorkspaceWidgetTask from '../WorkspaceWidgetTask/WorkspaceWidgetTask';
 import {getMinutesFromStartDay} from '../../../../helpers/getMinutesFromStartDay';
 import moment from 'moment';
 
-const WorkspaceWidgetHours = ({updateFullView, tasks, selectedDate}) => {
+const WorkspaceWidgetHours = ({updateFullView, tasks, selectedDate, closeTask, completeTask}) => {
   const hours = Array.from(Array(24));
   const minuteInPx = ((50 * 24) / (24 * 60)).toFixed(3);
   const isToday = moment(selectedDate).isSame(new Date(), "day");
@@ -54,6 +54,8 @@ const WorkspaceWidgetHours = ({updateFullView, tasks, selectedDate}) => {
             key={task._id}
             data={task}
             minuteInPx={minuteInPx}
+            closeTask={closeTask}
+            completeTask={completeTask}
           />
         ))}
         {hours.map((_, index) => renderHourBlock(index))}

@@ -4,8 +4,9 @@ import {WorkspaceWidgetTaskStyles} from './WorkspaceWidgetTask.styles';
 import {Ionicons} from '@expo/vector-icons';
 import {getMinutesFromStartDay} from '../../../../helpers/getMinutesFromStartDay';
 import commonStyles from '../../../../common.styles';
+import moment from 'moment';
 
-const WorkspaceWidgetTask = ({data, minuteInPx}) => {
+const WorkspaceWidgetTask = ({data, minuteInPx, closeTask, completeTask}) => {
   let startPosition = getMinutesFromStartDay(new Date(data.start_date)) * minuteInPx;
   let endPosition = getMinutesFromStartDay(new Date(data.end_date)) * minuteInPx;
 
@@ -22,12 +23,13 @@ const WorkspaceWidgetTask = ({data, minuteInPx}) => {
       <View style={WorkspaceWidgetTaskStyles.header}>
         <Text style={WorkspaceWidgetTaskStyles.name}>{data.name}</Text>
       </View>
-      {endPosition - startPosition >= 60 && (
+      {(endPosition - startPosition >= 60 && moment(data.end_date).isSameOrBefore(new Date())) && (
         <View style={WorkspaceWidgetTaskStyles.controls}>
-          <Pressable style={WorkspaceWidgetTaskStyles.button}>
+          <Pressable style={WorkspaceWidgetTaskStyles.button} onPress={() => completeTask(data._id)}>
             <Ionicons name="checkmark-done-sharp" size={24} color={commonStyles.secondaryBackground}/>
           </Pressable>
           <Pressable
+            onPress={() => closeTask(data._id)}
             style={[
               WorkspaceWidgetTaskStyles.button,
               WorkspaceWidgetTaskStyles.rightBtn
