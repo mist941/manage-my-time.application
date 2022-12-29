@@ -40,7 +40,7 @@ const AppFilter = ({params, setParams, clearParams, categories}) => {
           />
           <CustomDatePicker
             value={params.endDate}
-            onChange={date => setParams('startDate', new Date(date.nativeEvent.timestamp))}
+            onChange={date => setParams('endDate', new Date(date.nativeEvent.timestamp))}
             visibleType='day'
             width='45%'
             mode='date'
