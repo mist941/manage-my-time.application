@@ -11,38 +11,43 @@ import {taskTypes} from '../../helpers/tasksTypes';
 import SingleTask from './components/SingleTask/SingleTask';
 import {useDidUpdate} from '../../hooks/useDidUpdate';
 import {TasksScreenStyles} from './TasksScreen.styles';
+import AppFilter from '../../components/AppFilter/AppFilter';
 
 const TasksScreen = ({navigation}) => {
+  const [filterParams, setFilterParams] = useState({
+    startDate: new Date(),
+    endDate: new Date(),
+    category: null,
+  });
   const [categories, setCategories] = useState([]);
   const RBSheetRef = useRef();
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentTask, setCurrentTask] = useState(null);
-  const [page, setPage] = useState(1);
 
   const load = () => {
     const queryParams = {
       type: taskTypes.planedTask,
-      per_page: 7,
-      page,
+      start_date: filterParams.startDate ?? null,
+      end_date: filterParams.endDate ?? null,
+      category: filterParams?.category ?? null
     };
     services.tasksServices.getTasks(queryParams).then(res => {
       if (res.data) {
-        setTasks([...tasks, ...res.data]);
+        setTasks(res.data);
         setLoading(false);
       }
     });
   }
 
-  useEffect(() => load(), []);
-
-  useDidUpdate(() => load(), [page]);
+  useDidUpdate(() => load(), [filterParams.startDate, filterParams.endDate, filterParams.category]);
 
   useEffect(() => {
     return navigation.addListener('focus', () => {
       services.categoriesServices.getCategories().then(res => {
         if (res.data) setCategories(res.data.map(i => ({label: i.name, value: i._id})));
-      })
+      });
+      load();
     });
   }, [navigation]);
 
@@ -69,6 +74,7 @@ const TasksScreen = ({navigation}) => {
   };
 
   const openForm = () => RBSheetRef.current.open();
+
   const editTask = data => {
     setCurrentTask(data);
     openForm();
@@ -87,20 +93,30 @@ const TasksScreen = ({navigation}) => {
     });
   }
 
+  const updateFilterPrams = (type, value) => setFilterParams(prevState => ({...prevState, [type]: value}));
+
+  const clearFilterParams = () => setFilterParams({
+    startDate: new Date(),
+    endDate: new Date(),
+    category: null,
+  });
+
   if (loading) return <Preloader/>;
 
   return (
     <AppLayout>
       <PageHeader name="Tasks" count={tasks.length}/>
+      <AppFilter
+        categories={categories}
+        params={filterParams}
+        setParams={updateFilterPrams}
+        clearParams={clearFilterParams}
+      />
       <View style={TasksScreenStyles.flatListWrap}>
         <FlatList
           data={tasks}
           keyExtractor={item => item._id}
           contentContainerStyle={TasksScreenStyles.flatListContainer}
-          onEndReached={({distanceFromEnd}) => {
-            if (distanceFromEnd < 0) return;
-            setTimeout(() => setPage(prevState => prevState + 1), 300);
-          }}
           renderItem={({item}) => (
             <SingleTask
               key={item._id}

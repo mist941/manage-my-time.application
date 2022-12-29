@@ -29,4 +29,18 @@ export default {
       throw error;
     }
   },
+  completeTask: async id => {
+    try {
+      return await axios.put(`tasks/${id}/complete`);
+    } catch (error) {
+      throw error;
+    }
+  },
+  closeTask: async id => {
+    try {
+      return await axios.put(`tasks/${id}/close`);
+    } catch (error) {
+      throw error;
+    }
+  },
 }

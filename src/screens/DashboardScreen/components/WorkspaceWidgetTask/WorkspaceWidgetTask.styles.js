@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import commonStyles from '../../../../common.styles';
 
 export const WorkspaceWidgetTaskStyles = StyleSheet.create({
   taskWrap: {
@@ -14,6 +15,14 @@ export const WorkspaceWidgetTaskStyles = StyleSheet.create({
     padding: 5,
     flexDirection: 'column',
     justifyContent: 'space-between'
+  },
+  completed: {
+    borderColor: 'rgba(56, 196, 21, 0.4)',
+    borderWidth: 2
+  },
+  closed: {
+    borderColor: commonStyles.errColor,
+    borderWidth: 2
   },
   name: {
     fontSize: 12

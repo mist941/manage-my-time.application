@@ -16,13 +16,13 @@ const SingleTask = ({data, editTask, deleteTask}) => {
       'Delete task',
       'Are you sure you want to delete this task?',
       [
-        { text: 'Yes', onPress: () => deleteTask(data._id) },
+        {text: 'Yes', onPress: () => deleteTask(data._id)},
         {
           text: 'No',
           style: 'cancel',
         },
       ],
-      { cancelable: false }
+      {cancelable: false}
     );
   };
 
@@ -38,7 +38,7 @@ const SingleTask = ({data, editTask, deleteTask}) => {
       </View>
       <View style={SingleTaskStyles.footer}>
         <View>
-          {data.categories.map(category => (
+          {data?.categories?.map(category => (
             <View
               style={[SingleTaskStyles.category, {backgroundColor: colorsList[category.color]}]}
               key={category._id}
@@ -51,12 +51,14 @@ const SingleTask = ({data, editTask, deleteTask}) => {
           ))}
         </View>
         <View style={SingleTaskStyles.actions}>
-          <Pressable
-            onPress={() => editTask(data)}
-            style={[SingleTaskStyles.action, {backgroundColor: '#63CD9A'}]}
-          >
-            <EditIcon/>
-          </Pressable>
+          {moment(data.start_date).isSameOrAfter(new Date()) && (
+            <Pressable
+              onPress={() => editTask(data)}
+              style={[SingleTaskStyles.action, {backgroundColor: '#63CD9A'}]}
+            >
+              <EditIcon/>
+            </Pressable>
+          )}
           <Pressable
             onPress={deleteConfirm}
             style={[SingleTaskStyles.action, {backgroundColor: '#FF8181', marginRight: 0}]}

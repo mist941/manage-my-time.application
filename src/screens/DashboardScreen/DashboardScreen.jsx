@@ -25,6 +25,10 @@ const DashboardScreen = ({navigation}) => {
     });
   }
 
+  const updateTask = newTask => {
+    setTasks(prevState => prevState.map(task => task._id === newTask._id ? newTask : task));
+  }
+
   useEffect(() => {
     return navigation.addListener('focus', () => {
       setSelectDate(new Date());
@@ -42,6 +46,7 @@ const DashboardScreen = ({navigation}) => {
       <WorkspaceWidget
         tasks={tasks}
         selectedDate={selectedDate}
+        updateTask={updateTask}
       />
       <DayPicker
         styles={DashboardScreenStyles.dayPicker}

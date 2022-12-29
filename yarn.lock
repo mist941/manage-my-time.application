@@ -1941,6 +1941,11 @@ accepts@^1.3.7, accepts@^1.3.8, accepts@~1.3.5, accepts@~1.3.7:
     mime-types "~2.1.34"
     negotiator "0.6.3"
 
+add@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/add/-/add-2.0.6.tgz#248f0a9f6e5a528ef2295dbeec30532130ae2235"
+  integrity sha512-j5QzrmsokwWWp6kUcJQySpbG+xfOBqqKnup3OIk1pz+kB/80SLorZ9V8zHFLO92Lcd+hbvq8bT+zOGoPkmBV0Q==
+
 aggregate-error@^3.0.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/aggregate-error/-/aggregate-error-3.1.0.tgz"
@@ -2844,28 +2849,28 @@ css-in-js-utils@^2.0.0:
     hyphenate-style-name "^1.0.2"
     isobject "^3.0.1"
 
-css-select@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.npmjs.org/css-select/-/css-select-5.1.0.tgz"
-  integrity sha512-nwoRF1rvRRnnCqqY7updORDsuqKzqYJ28+oSMaJMMgOauh3fvwHqMS7EZpIPqK8GL+g9mKxF1vP/ZjSeNjEVHg==
+css-select@^4.2.1:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/css-select/-/css-select-4.3.0.tgz#db7129b2846662fd8628cfc496abb2b59e41529b"
+  integrity sha512-wPpOYtnsVontu2mODhA19JrqWxNsfdatRKd64kmpRbQgh1KtItko5sTnEpPdpSaJszTOhEMlF/RPz28qj4HqhQ==
   dependencies:
     boolbase "^1.0.0"
-    css-what "^6.1.0"
-    domhandler "^5.0.2"
-    domutils "^3.0.1"
+    css-what "^6.0.1"
+    domhandler "^4.3.1"
+    domutils "^2.8.0"
     nth-check "^2.0.1"
 
-css-tree@^1.1.3:
+css-tree@^1.0.0-alpha.39:
   version "1.1.3"
-  resolved "https://registry.npmjs.org/css-tree/-/css-tree-1.1.3.tgz"
+  resolved "https://registry.yarnpkg.com/css-tree/-/css-tree-1.1.3.tgz#eb4870fb6fd7707327ec95c2ff2ab09b5e8db91d"
   integrity sha512-tRpdppF7TRazZrjJ6v3stzv93qxRcSsFmW6cX0Zm2NVKpxE1WV1HblnghVv9TreireHkqI/VDEsfolRF1p6y7Q==
   dependencies:
     mdn-data "2.0.14"
     source-map "^0.6.1"
 
-css-what@^6.1.0:
+css-what@^6.0.1:
   version "6.1.0"
-  resolved "https://registry.npmjs.org/css-what/-/css-what-6.1.0.tgz"
+  resolved "https://registry.yarnpkg.com/css-what/-/css-what-6.1.0.tgz#fb5effcf76f1ddea2c81bdfaa4de44e79bac70f4"
   integrity sha512-HTUrgRJ7r4dsZKU6GjmpfRK1O76h97Z8MfS1G0FozR+oF2kG6Vfe8JE6zwrkbxigziPHinCJ+gCPjA9EaBDtRw==
 
 dag-map@~1.0.0:
@@ -3029,35 +3034,35 @@ dir-glob@^3.0.1:
   dependencies:
     path-type "^4.0.0"
 
-dom-serializer@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/dom-serializer/-/dom-serializer-2.0.0.tgz"
-  integrity sha512-wIkAryiqt/nV5EQKqQpo3SToSOV9J0DnbJqwK7Wv/Trc92zIAYZ4FlMu+JPFW1DfGFt81ZTCGgDEabffXeLyJg==
+dom-serializer@^1.0.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/dom-serializer/-/dom-serializer-1.4.1.tgz#de5d41b1aea290215dc45a6dae8adcf1d32e2d30"
+  integrity sha512-VHwB3KfrcOOkelEG2ZOfxqLZdfkil8PtJi4P8N2MMXucZq2yLp75ClViUlOVwyoHEDjYU433Aq+5zWP61+RGag==
   dependencies:
-    domelementtype "^2.3.0"
-    domhandler "^5.0.2"
-    entities "^4.2.0"
+    domelementtype "^2.0.1"
+    domhandler "^4.2.0"
+    entities "^2.0.0"
 
-domelementtype@^2.3.0:
+domelementtype@^2.0.1, domelementtype@^2.2.0:
   version "2.3.0"
-  resolved "https://registry.npmjs.org/domelementtype/-/domelementtype-2.3.0.tgz"
+  resolved "https://registry.yarnpkg.com/domelementtype/-/domelementtype-2.3.0.tgz#5c45e8e869952626331d7aab326d01daf65d589d"
   integrity sha512-OLETBj6w0OsagBwdXnPdN0cnMfF9opN69co+7ZrbfPGrdpPVNBUj02spi6B1N7wChLQiPn4CSH/zJvXw56gmHw==
 
-domhandler@^5.0.1, domhandler@^5.0.2:
-  version "5.0.3"
-  resolved "https://registry.npmjs.org/domhandler/-/domhandler-5.0.3.tgz"
-  integrity sha512-cgwlv/1iFQiFnU96XXgROh8xTeetsnJiDsTc7TYCLFd9+/WNkIqPTxiM/8pSd8VIrhXGTf1Ny1q1hquVqDJB5w==
+domhandler@^4.2.0, domhandler@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/domhandler/-/domhandler-4.3.1.tgz#8d792033416f59d68bc03a5aa7b018c1ca89279c"
+  integrity sha512-GrwoxYN+uWlzO8uhUXRl0P+kHE4GtVPfYzVLcUxPL7KNdHKj66vvlhiweIHqYYXWlw+T8iLMp42Lm67ghw4WMQ==
   dependencies:
-    domelementtype "^2.3.0"
+    domelementtype "^2.2.0"
 
-domutils@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/domutils/-/domutils-3.0.1.tgz"
-  integrity sha512-z08c1l761iKhDFtfXO04C7kTdPBLi41zwOZl00WS8b5eiaebNpY00HKbztwBq+e3vyqWNwWF3mP9YLUeqIrF+Q==
+domutils@^2.8.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/domutils/-/domutils-2.8.0.tgz#4437def5db6e2d1f5d6ee859bd95ca7d02048135"
+  integrity sha512-w96Cjofp72M5IIhpjgobBimYEfoPjx1Vx0BSX9P30WBdZW2WIKU0T1Bd0kz2eNZ9ikjKgHbEyKx8BB6H1L3h3A==
   dependencies:
-    dom-serializer "^2.0.0"
-    domelementtype "^2.3.0"
-    domhandler "^5.0.1"
+    dom-serializer "^1.0.1"
+    domelementtype "^2.2.0"
+    domhandler "^4.2.0"
 
 dotenv@^10.0.0:
   version "10.0.0"
@@ -3098,10 +3103,10 @@ end-of-stream@^1.1.0:
   dependencies:
     once "^1.4.0"
 
-entities@^4.2.0:
-  version "4.4.0"
-  resolved "https://registry.npmjs.org/entities/-/entities-4.4.0.tgz"
-  integrity sha512-oYp7156SP8LkeGD0GF85ad1X9Ai79WtRsZ2gxJqtBuzH+98YUV6jkHEKlZkMbcrjJjIVJNIDP/3WL9wQkoPbWA==
+entities@^2.0.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/entities/-/entities-2.2.0.tgz#098dc90ebb83d8dffa089d55256b351d34c4da55"
+  integrity sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==
 
 env-editor@^0.4.1:
   version "0.4.2"
@@ -5969,6 +5974,11 @@ path-type@^4.0.0:
   resolved "https://registry.npmjs.org/path-type/-/path-type-4.0.0.tgz"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
 
+paths-js@^0.4.10:
+  version "0.4.11"
+  resolved "https://registry.yarnpkg.com/paths-js/-/paths-js-0.4.11.tgz#b2a9d5f94ee9949aa8fee945f78a12abff44599e"
+  integrity sha512-3mqcLomDBXOo7Fo+UlaenG6f71bk1ZezPQy2JCmYHy2W2k5VKpP+Jbin9H0bjXynelTbglCqdFhSEkeIkKTYUA==
+
 picocolors@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/picocolors/-/picocolors-1.0.0.tgz"
@@ -6015,6 +6025,11 @@ pngjs@^3.3.0:
   version "3.4.0"
   resolved "https://registry.npmjs.org/pngjs/-/pngjs-3.4.0.tgz"
   integrity sha512-NCrCHhWmnQklfH4MtJMRjZ2a8c80qXeMlQMv2uVp9ISJMTt562SbGd6n2oq0PaPgKm7Z6pL9E2UlLIhC+SHL3w==
+
+point-in-polygon@^1.0.1:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/point-in-polygon/-/point-in-polygon-1.1.0.tgz#b0af2616c01bdee341cbf2894df643387ca03357"
+  integrity sha512-3ojrFwjnnw8Q9242TzgXuTD+eKiutbzyslcq1ydfu82Db2y+Ogbmyrkpv0Hgj31qwT3lbS9+QAAO/pIQM35XRw==
 
 polished@^4.1.4:
   version "4.2.2"
@@ -6245,6 +6260,15 @@ react-native-calendar-strip@^2.2.6:
     prop-types "^15.6.0"
     recyclerlistview "^3.0.0"
 
+react-native-chart-kit@^6.12.0:
+  version "6.12.0"
+  resolved "https://registry.yarnpkg.com/react-native-chart-kit/-/react-native-chart-kit-6.12.0.tgz#187a4987a668a85b7e93588c248ed2c33b3a06f6"
+  integrity sha512-nZLGyCFzZ7zmX0KjYeeSV1HKuPhl1wOMlTAqa0JhlyW62qV/1ZPXHgT8o9s8mkFaGxdqbspOeuaa6I9jUQDgnA==
+  dependencies:
+    lodash "^4.17.13"
+    paths-js "^0.4.10"
+    point-in-polygon "^1.0.1"
+
 react-native-codegen@^0.0.17:
   version "0.0.17"
   resolved "https://registry.npmjs.org/react-native-codegen/-/react-native-codegen-0.0.17.tgz"
@@ -6317,13 +6341,13 @@ react-native-smooth-picker@^1.1.5:
   resolved "https://registry.npmjs.org/react-native-smooth-picker/-/react-native-smooth-picker-1.1.5.tgz"
   integrity sha512-bjbaydabhmhRBVOIbXclzz26LFgN0vOZwj65KWImg5Jqhqzkty5h9cryPf52uJQ22uPLvkrDtSVsHxgUb5qWcA==
 
-react-native-svg@^12.3.0:
-  version "12.4.4"
-  resolved "https://registry.npmjs.org/react-native-svg/-/react-native-svg-12.4.4.tgz"
-  integrity sha512-LpcNlEVCURexqPAvQ9ne8KrPVfYz0wIDygwud8VMRmXLezysXzyQN/DTsjm1BO9lIfYp55WQsr3u3yW/vk6iiA==
+react-native-svg@12.3.0:
+  version "12.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-12.3.0.tgz#40f657c5d1ee366df23f3ec8dae76fd276b86248"
+  integrity sha512-ESG1g1j7/WLD7X3XRFTQHVv0r6DpbHNNcdusngAODIxG88wpTWUZkhcM3A2HJTb+BbXTFDamHv7FwtRKWQ/ALg==
   dependencies:
-    css-select "^5.1.0"
-    css-tree "^1.1.3"
+    css-select "^4.2.1"
+    css-tree "^1.0.0-alpha.39"
 
 react-native-web@0.17.7:
   version "0.17.7"
@@ -7835,6 +7859,11 @@ yargs@^15.1.0, yargs@^15.3.1:
     which-module "^2.0.0"
     y18n "^4.0.0"
     yargs-parser "^18.1.2"
+
+yarn@^1.22.19:
+  version "1.22.19"
+  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.22.19.tgz#4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
+  integrity sha512-/0V5q0WbslqnwP91tirOvldvYISzaqhClxzyUKXYxs07yUILIs5jx/k6CFe8bvKSkds5w+eiOqta39Wk3WxdcQ==
 
 yocto-queue@^0.1.0:
   version "0.1.0"

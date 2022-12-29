@@ -15,6 +15,7 @@
     "@react-native-community/datetimepicker": "^6.3.2",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
+    "add": "^2.0.6",
     "axios": "^0.27.2",
     "expo": "~45.0.0",
     "expo-asset": "^8.5.0",
@@ -36,6 +37,7 @@
     "react-i18next": "^11.16.9",
     "react-native": "0.68.2",
     "react-native-calendar-strip": "^2.2.6",
+    "react-native-chart-kit": "^6.12.0",
     "react-native-dotenv": "^3.3.1",
     "react-native-drop-shadow": "^0.0.4",
     "react-native-picker-scrollview": "^1.0.1",
@@ -45,9 +47,10 @@
     "react-native-screens": "^3.13.1",
     "react-native-shadow-2": "^6.0.5",
     "react-native-smooth-picker": "^1.1.5",
-    "react-native-svg": "^12.3.0",
+    "react-native-svg": "12.3.0",
     "react-native-web": "0.17.7",
     "react-native-wheel-scrollview-picker": "^2.0.1",
+    "yarn": "^1.22.19",
     "yup": "^0.32.11"
   },
   "devDependencies": {

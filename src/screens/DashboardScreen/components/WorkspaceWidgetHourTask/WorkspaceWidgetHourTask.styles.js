@@ -14,6 +14,14 @@ export const WorkspaceWidgetHourTaskStyles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center'
   },
+  completed: {
+    borderColor: 'rgba(56, 196, 21, 0.4)',
+    borderWidth: 2
+  },
+  closed: {
+    borderColor: commonStyles.errColor,
+    borderWidth: 2
+  },
   name: {
     fontWeight: '400',
     fontSize: 14,

@@ -1,6 +1,4 @@
 export const getMinutesFromStartDay = time => {
-  const date = new Date();
-  let today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-
+  let today = new Date(time.getUTCFullYear(), time.getUTCMonth(), time.getUTCDate());
   return (time - today) / (1000 * 60);
 }
