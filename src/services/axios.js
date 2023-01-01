@@ -10,7 +10,7 @@ axiosApiInstance.interceptors.request.use(
       config.headers['user'] = JSON.stringify(currentUser);
     }
     config.withCredentials = true;
-    config.baseURL = 'http://192.168.0.101:3005/v1'
+    config.baseURL = 'https://managemytime-api.netxill.com/v1'
     return config;
   },
   error => {
