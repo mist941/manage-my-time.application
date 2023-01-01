@@ -17,6 +17,7 @@ const CustomDatePicker = (
   let result = moment(value).format('HH:mm');
 
   if (visibleType === "day") result = moment(value).format('MMMM Do YYYY');
+  if (!value) result = 'Select date';
 
   return (
     <View style={{width}}>

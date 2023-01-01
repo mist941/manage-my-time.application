@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import commonStyles from '../../common.styles';
 
 export const AppFilterStyles = StyleSheet.create({
   filterWrap: {
@@ -13,6 +14,9 @@ export const AppFilterStyles = StyleSheet.create({
   },
   filterBtn: {
     padding: 5,
+    borderWidth: 2,
+    borderColor: commonStyles.primaryOpacityBackground,
+    borderRadius: 10,
   },
   group: {
     flexDirection: 'row',

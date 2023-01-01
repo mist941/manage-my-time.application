@@ -1,61 +1,77 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import AppLayout from '../../layouts/AppLayout/AppLayout';
 import PageHeader from '../../components/PageHeader/PageHeader';
-import StatisticBarChart from '../../components/BarChart/StatisticBarChart';
-import {Text} from 'react-native';
+import AppFilter from '../../components/AppFilter/AppFilter';
+import services from '../../services';
+import Preloader from '../../components/Preloader/Preloader';
+import {taskTypes} from '../../helpers/tasksTypes';
+import {useDidUpdate} from '../../hooks/useDidUpdate';
+import StatisticsByTypes from './components/StatisticsByTypes/StatisticsByTypes';
+import StatisticsByCategories from './components/StatisticsByCategories/StatisticsByCategories';
 
-const StatisticsScreen = () => {
+const StatisticsScreen = ({navigation}) => {
+  const [filterParams, setFilterParams] = useState({
+    startDate: new Date(new Date().setUTCMonth(0)),
+    endDate: new Date(new Date().setUTCMonth(11)),
+    category: null,
+  });
+  const [categories, setCategories] = useState([]);
+  const [statistics, setStatistics] = useState({
+    by_types: {completed_tasks_count: 0, closed_tasks_count: 0},
+    by_categories: [],
+  });
+  const [loading, setLoading] = useState(true);
+
+
+  const load = async () => {
+    const queryParams = {
+      type: taskTypes.planedTask,
+      start_date: filterParams?.startDate ?? null,
+      end_date: filterParams?.endDate ?? null,
+      category: filterParams?.category ?? null
+    };
+    const statisticsByTypes = await services.statisticsServices.getStatisticsByTypes(queryParams).then(res => res.data);
+    const statisticsByCategories = await services.statisticsServices.getStatisticsByCategories(queryParams).then(res => res.data || []);
+
+    setStatistics({
+      by_types: statisticsByTypes,
+      by_categories: statisticsByCategories,
+    });
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    return navigation.addListener('focus', () => {
+      services.categoriesServices.getCategories().then(res => {
+        if (res.data) setCategories(res.data.map(i => ({label: i.name, value: i._id})));
+      });
+      load();
+    });
+  }, [navigation]);
+
+  useDidUpdate(() => load(), [filterParams]);
+
+  const updateFilterPrams = (type, value) => setFilterParams(prevState => ({...prevState, [type]: value}));
+
+  const clearFilterParams = () => setFilterParams({
+    startDate: new Date(new Date().setUTCMonth(0)),
+    endDate: new Date(new Date().setUTCMonth(11)),
+    category: null,
+  });
+
+  if (loading) return <Preloader/>;
+
   return (
     <AppLayout>
       <PageHeader name="Statistics"/>
-      <Text>by Tasks</Text>
-      <StatisticBarChart data={[
-        {
-          name: 'Completed',
-          population: 2,
-          color: 'rgba(56, 196, 21, 0.4)',
-          legendFontColor: '#7F7F7F',
-          legendFontSize: 12,
-        },
-        {
-          name: 'Closed',
-          population: 20,
-          color: '#FF8181',
-          legendFontColor: '#7F7F7F',
-          legendFontSize: 12,
-        },
-      ]}/>
-      <Text>by Categories</Text>
-      <StatisticBarChart data={[
-        {
-          name: 'Eating',
-          population: 10,
-          color: 'rgba(239, 190, 63, 0.7)',
-          legendFontColor: '#7F7F7F',
-          legendFontSize: 12,
-        },
-        {
-          name: 'Masturbation',
-          population: 2,
-          color: 'rgba(86, 228, 255, 0.7)',
-          legendFontColor: '#7F7F7F',
-          legendFontSize: 12,
-        },
-        {
-          name: 'Learning',
-          population: 5,
-          color: 'rgba(248, 126, 181, 0.7)',
-          legendFontColor: '#7F7F7F',
-          legendFontSize: 12,
-        },
-        {
-          name: 'Working',
-          population: 5,
-          color: 'rgba(109, 77, 166, 0.56)',
-          legendFontColor: '#873',
-          legendFontSize: 12,
-        },
-      ]}/>
+      <AppFilter
+        categories={categories}
+        params={filterParams}
+        setParams={updateFilterPrams}
+        clearParams={clearFilterParams}
+      />
+      <StatisticsByTypes statistics={statistics} filterParams={filterParams} categories={categories}/>
+      <StatisticsByCategories statistics={statistics} filterParams={filterParams}/>
     </AppLayout>
   );
 };

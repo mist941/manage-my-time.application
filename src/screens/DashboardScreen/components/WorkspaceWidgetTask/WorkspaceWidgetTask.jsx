@@ -15,7 +15,7 @@ const WorkspaceWidgetTask = ({data, minuteInPx, closeTask, completeTask}) => {
 
   const promptClose = () => {
     Alert.alert(
-      'Complete Task',
+      'Close Task',
       'Are you sure you want to close this task?',
       [
         {text: 'Yes', onPress: () => closeTask(data._id)},

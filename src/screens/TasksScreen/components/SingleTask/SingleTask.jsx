@@ -43,7 +43,7 @@ const SingleTask = ({data, editTask, deleteTask}) => {
               style={[SingleTaskStyles.category, {backgroundColor: colorsList[category.color]}]}
               key={category._id}
             >
-              {category.icon ? <Ionicons name={category.icon} size={17} color="black"/> : <EmptyCategoryIcon/>}
+              {category.icon && <Ionicons name={category.icon} size={17} color="black"/>}
               <Text style={SingleTaskStyles.categoryName}>
                 {category.name}
               </Text>
