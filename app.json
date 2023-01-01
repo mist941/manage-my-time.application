@@ -28,7 +28,7 @@
       }
     },
     "android": {
-      "package": "host.expo.exponent",
+      "package": "host.taskmaster.exponent",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
