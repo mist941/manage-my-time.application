@@ -35,7 +35,7 @@ const AuthProvider = ({children}) => {
   };
 
   const signIn = userParams => {
-    services.authServices.signIn({...userParams, push_notification_token: null}).then(res => {
+    services.authServices.signIn({...userParams, push_notification_token: "test"}).then(res => {
       putUser(res.data);
     });
   }
