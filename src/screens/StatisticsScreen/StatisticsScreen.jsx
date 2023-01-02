@@ -8,11 +8,12 @@ import {taskTypes} from '../../helpers/tasksTypes';
 import {useDidUpdate} from '../../hooks/useDidUpdate';
 import StatisticsByTypes from './components/StatisticsByTypes/StatisticsByTypes';
 import StatisticsByCategories from './components/StatisticsByCategories/StatisticsByCategories';
+import moment from 'moment';
 
 const StatisticsScreen = ({navigation}) => {
   const [filterParams, setFilterParams] = useState({
-    startDate: new Date(new Date().setUTCMonth(0)),
-    endDate: new Date(new Date().setUTCMonth(11)),
+    startDate: new Date(moment(new Date()).set('month', 0).set('date', 1).format()),
+    endDate: new Date(moment(new Date()).set('month', 11).set('date', 30).format()),
     category: null,
   });
   const [categories, setCategories] = useState([]);
@@ -54,8 +55,8 @@ const StatisticsScreen = ({navigation}) => {
   const updateFilterPrams = (type, value) => setFilterParams(prevState => ({...prevState, [type]: value}));
 
   const clearFilterParams = () => setFilterParams({
-    startDate: new Date(new Date().setUTCMonth(0)),
-    endDate: new Date(new Date().setUTCMonth(11)),
+    startDate: new Date(moment(new Date()).set('month', 0).set('date', 1).format()),
+    endDate: new Date(moment(new Date()).set('month', 11).set('date', 30).format()),
     category: null,
   });
 
