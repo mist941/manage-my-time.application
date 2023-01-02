@@ -1,6 +1,6 @@
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
-import {Platform} from 'react-native';
+import {Alert, Platform} from 'react-native';
 
 export async function registerPushNotificationsToken() {
   let token;
@@ -12,12 +12,22 @@ export async function registerPushNotificationsToken() {
       finalStatus = status;
     }
     if (finalStatus !== 'granted') {
-      alert('Failed to get push token for push notification!');
+      Alert.alert(
+        'Hello',
+        'Failed to get push token for Push Notification!',
+        [],
+        { cancelable: false }
+      );
       return;
     }
     token = (await Notifications.getExpoPushTokenAsync()).data;
   } else {
-    alert('Must use physical device for Push Notifications');
+    Alert.alert(
+      'Hello',
+      'Must use physical device for Push Notifications',
+      [],
+      { cancelable: false }
+    );
   }
 
   if (Platform.OS === 'android') {
@@ -28,6 +38,11 @@ export async function registerPushNotificationsToken() {
       lightColor: '#FF231F7C',
     });
   }
-
+  Alert.alert(
+    'Hello',
+    'Test',
+    [],
+    { cancelable: true }
+  );
   return token;
 }

@@ -36,21 +36,8 @@ const LoginButtonsGroup = () => {
   return (
     <View style={LoginButtonsGroupStyles.btnGroup}>
       <CustomButton
-        text={t('without-register-btn')}
+        text={t('Sign in')}
         onPress={standAloneSignIn}
-      />
-      <View style={LoginButtonsGroupStyles.dividerGroup}>
-        <Divider height={1}/>
-        <Text style={LoginButtonsGroupStyles.text}>
-          {t('or')}
-        </Text>
-        <Divider height={1}/>
-      </View>
-      <CustomButton
-        text={t('sign-in-with-google')}
-        type='secondary'
-        iconUri={Asset.fromModule(require('../../../../../assets/images/google.png')).uri}
-        onPress={() => promptAsync()}
       />
     </View>
   );

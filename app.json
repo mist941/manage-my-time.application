@@ -3,7 +3,7 @@
     "name": "manage-my-time",
     "slug": "manage-my-time",
     "owner": "ivanstatkevich",
-    "version": "5.0.0",
+    "version": "9.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -28,7 +28,7 @@
       }
     },
     "android": {
-      "versionCode": 6,
+      "versionCode": 9,
       "package": "host.taskmaster.exponent",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",

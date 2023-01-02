@@ -23,7 +23,7 @@ Notifications.setNotificationHandler({
 });
 
 export default function App() {
-  AsyncStorage.removeItem("@logged_user");
+
   const updatePushToken = async () => {
     let user = await AsyncStorage.getItem('@logged_user');
     if (user) {
