@@ -28,7 +28,7 @@
       }
     },
     "android": {
-      "versionCode": 5,
+      "versionCode": 2,
       "package": "host.taskmaster.exponent",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
