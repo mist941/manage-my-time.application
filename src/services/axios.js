@@ -10,7 +10,7 @@ axiosApiInstance.interceptors.request.use(
       config.headers['user'] = JSON.stringify(currentUser);
     }
     config.withCredentials = true;
-    config.baseURL = 'https://managemytime-api.netxill.com/v1'
+    config.baseURL = 'https://manage-my-timeapi-production.up.railway.app/v1'
     return config;
   },
   error => {
