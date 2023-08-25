@@ -16,7 +16,7 @@ const AuthProvider = ({children}) => {
     });
   }, []);
 
-  const [request, response, promptAsync] = Google.useAuthRequest({
+  const [request, response] = Google.useAuthRequest({
     androidClientId: '278015890123-n1kmm160pasl41dafp8mg47m895i72do.apps.googleusercontent.com',
     expoClientId: '278015890123-jmiduepfm1vfvqhnn4ggcusf4qheqe21.apps.googleusercontent.com',
     redirectUri: 'https://auth.expo.io/@ivanstatkevich/manage-my-time',
@@ -42,7 +42,6 @@ const AuthProvider = ({children}) => {
   return (
     <AuthContext.Provider
       value={{
-        promptAsync,
         response,
         request,
         currentUser,

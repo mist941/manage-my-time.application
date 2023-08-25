@@ -10,7 +10,7 @@ import Divider from '../../../../components/Divider/Divider';
 
 const LoginButtonsGroup = () => {
   const {t} = useTranslation();
-  const {promptAsync, response, signIn} = useContext(AuthContext);
+  const {response, signIn} = useContext(AuthContext);
 
   useEffect(() => {
     if (response?.type === "success") {

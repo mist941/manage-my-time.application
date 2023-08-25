@@ -1,4 +1,4 @@
-import {SafeAreaView, StyleSheet} from 'react-native';
+import {AppRegistry, Platform, SafeAreaView, StyleSheet} from 'react-native';
 import {StatusBar} from 'expo-status-bar';
 import {I18nextProvider} from 'react-i18next';
 import i18n from './src/i18n';
@@ -17,6 +17,13 @@ Notifications.setNotificationHandler({
     shouldSetBadge: true,
   }),
 });
+
+AppRegistry.registerComponent('X', () => App);
+
+if (Platform.OS === 'web') {
+  const rootTag = document.getElementById('root') || document.getElementById('X');
+  AppRegistry.runApplication('X', { rootTag });
+}
 
 export default function App() {
   return (
