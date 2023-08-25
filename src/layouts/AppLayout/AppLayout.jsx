@@ -5,7 +5,7 @@ import {AppLayoutStyles} from './AppLayout.styles';
 import Navigation from '../../components/Navigation/Navigation/Navigation';
 
 const AppLayout = ({children, outsidePress}) => {
-  const windowHeight = Dimensions.get('window').height;
+  const windowHeight = Dimensions.get('window').height - 25;
 
   return (
     <View style={[

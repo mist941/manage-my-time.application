@@ -9,6 +9,8 @@ axiosApiInstance.interceptors.request.use(
     if (currentUser) {
       config.headers['user'] = JSON.stringify(currentUser);
     }
+    config.headers["Accept"] = "application/json";
+    config.headers["Content-Type"] = "application/json";
     config.withCredentials = true;
     config.baseURL = 'https://manage-my-timeapi-production.up.railway.app/v1'
     return config;
