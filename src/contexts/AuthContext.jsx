@@ -2,7 +2,6 @@ import {createContext, useEffect, useState} from "react";
 import * as Google from "expo-auth-session/providers/google";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import services from '../services';
-import {registerPushNotificationsToken} from '../helpers/registerPushNotificationsToken';
 
 export const AuthContext = createContext();
 
