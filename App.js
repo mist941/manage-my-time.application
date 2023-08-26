@@ -27,7 +27,6 @@ if (Platform.OS === 'web') {
 }
 
 export default function App() {
-  AsyncStorage.removeItem('@logged_user')
   return (
     <I18nextProvider i18n={i18n}>
       <SafeAreaView style={styles.container}>
