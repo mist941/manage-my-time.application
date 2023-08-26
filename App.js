@@ -7,7 +7,6 @@ import AuthProvider from './src/contexts/AuthContext';
 import Router from './src/router/Router';
 import commonStyles from './src/common.styles';
 import * as Notifications from 'expo-notifications';
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 WebBrowser.maybeCompleteAuthSession();
 
