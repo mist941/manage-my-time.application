@@ -1,6 +1,6 @@
 {
   "name": "manage-my-time",
-  "version": "10.0.0",
+  "version": "12.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",

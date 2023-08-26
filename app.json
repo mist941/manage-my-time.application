@@ -3,7 +3,7 @@
     "name": "manage-my-time",
     "slug": "manage-my-time",
     "owner": "ivanstatkevich",
-    "version": "10.0.0",
+    "version": "12.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
