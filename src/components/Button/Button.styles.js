@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import commonStyles from '../../common.styles';
 
-export const CustomButtonStyles = StyleSheet.create({
+export const ButtonStyles = StyleSheet.create({
   button: {
     justifyContent: 'center',
     alignItems: 'center',

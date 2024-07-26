@@ -2,7 +2,7 @@ import React from 'react';
 import {Dimensions} from 'react-native';
 import {PieChart} from 'react-native-chart-kit';
 
-const StatisticBarChart = ({data}) => {
+const StatisticPieChart = ({data}) => {
   return (
     <PieChart
       data={data}
@@ -30,4 +30,4 @@ const StatisticBarChart = ({data}) => {
   );
 };
 
-export default StatisticBarChart;
+export default StatisticPieChart;

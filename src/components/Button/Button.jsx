@@ -1,9 +1,9 @@
 import React, {useRef} from 'react';
 import {Text, Pressable, Animated, Image} from 'react-native';
-import {CustomButtonStyles} from "./CustomButton.styles";
+import {ButtonStyles} from "./Button.styles";
 import {capitalizeFirstLetter} from "../../helpers/stringHelpers";
 
-const CustomButton = ({text, onPress, type = 'primary', iconUri}) => {
+const Button = ({text, onPress, type = 'primary', iconUri}) => {
   const animatedOpacity = useRef(new Animated.Value(1)).current;
 
   const handlePress = () => {
@@ -20,18 +20,18 @@ const CustomButton = ({text, onPress, type = 'primary', iconUri}) => {
     <Pressable onPress={handlePress}>
       <Animated.View
         style={[
-          CustomButtonStyles.button,
-          CustomButtonStyles[type],
+          ButtonStyles.button,
+          ButtonStyles[type],
           {opacity: animatedOpacity},
-          iconUri && CustomButtonStyles.withIcon
+          iconUri && ButtonStyles.withIcon
         ]
         }
       >
-        {iconUri && <Image source={{uri: iconUri}} style={CustomButtonStyles.icon}/>}
+        {iconUri && <Image source={{uri: iconUri}} style={ButtonStyles.icon}/>}
         <Text
           style={[
-            CustomButtonStyles.buttonText,
-            CustomButtonStyles['text' + capitalizeFirstLetter(type)]
+            ButtonStyles.buttonText,
+            ButtonStyles['text' + capitalizeFirstLetter(type)]
           ]}>
           {text}
         </Text>
@@ -40,4 +40,4 @@ const CustomButton = ({text, onPress, type = 'primary', iconUri}) => {
   );
 };
 
-export default CustomButton;
+export default Button;

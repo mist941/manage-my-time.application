@@ -1,5 +1,5 @@
 import React from 'react';
-import StatisticBarChart from '../../../../components/BarChart/StatisticBarChart';
+import StatisticPieChart from '../../../../components/StatisticPieChart/StatisticPieChart';
 import {Text} from 'react-native';
 import {StatisticsScreenStyles} from '../../StatisticsScreen.styles';
 import {colorsList} from '../../../../helpers/colorsList';
@@ -15,13 +15,15 @@ const StatisticsByCategories = ({statistics, filterParams}) => {
       {categoriesTasksCount <= 0 ? (
         <Text style={StatisticsScreenStyles.emptyTasks}>No tasks</Text>
       ) : (
-        <StatisticBarChart data={statistics.by_categories.map(category => ({
-          name: category.name,
-          population: category.tasks_count,
-          color: colorsList[category.color],
-          legendFontColor: '#7F7F7F',
-          legendFontSize: 12,
-        }))}/>
+        <StatisticPieChart
+          data={statistics.by_categories.map(category => ({
+            name: category.name,
+            population: category.tasks_count,
+            color: colorsList[category.color],
+            legendFontColor: '#7F7F7F',
+            legendFontSize: 12,
+          }))}
+        />
       )}
     </>
   );

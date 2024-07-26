@@ -1,5 +1,5 @@
 import React from 'react';
-import StatisticBarChart from '../../../../components/BarChart/StatisticBarChart';
+import StatisticPieChart from '../../../../components/StatisticPieChart/StatisticPieChart';
 import {Text} from 'react-native';
 import {StatisticsScreenStyles} from '../../StatisticsScreen.styles';
 
@@ -15,7 +15,7 @@ const StatisticsByTypes = ({statistics, filterParams, categories}) => {
       {tasksCount <= 0 ? (
         <Text style={StatisticsScreenStyles.emptyTasks}>No tasks</Text>
       ) : (
-        <StatisticBarChart data={[
+        <StatisticPieChart data={[
           {
             name: 'Completed',
             population: statistics.by_types.completed_tasks_count,
