@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import CustomButton from '../CustomButton/CustomButton';
+import CustomButton from '../Button/Button';
 import moment from 'moment';
 
 const CustomDatePicker = (

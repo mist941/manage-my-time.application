@@ -1,12 +1,10 @@
 import React, {useContext, useEffect} from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import {LoginButtonsGroupStyles} from './LoginButtonsGroup.styles';
-import {Asset} from 'expo-asset';
 import {useTranslation} from 'react-i18next';
 import {AuthContext} from '../../../../contexts/AuthContext';
 import {generateUniqueId} from '../../../../helpers/generateUniqueId';
-import CustomButton from '../../../../components/CustomButton/CustomButton';
-import Divider from '../../../../components/Divider/Divider';
+import CustomButton from '../../../../components/Button/Button';
 
 const LoginButtonsGroup = () => {
   const {t} = useTranslation();
