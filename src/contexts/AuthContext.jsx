@@ -2,6 +2,7 @@ import {createContext, useEffect, useState} from "react";
 import * as Google from "expo-auth-session/providers/google";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import services from '../services';
+import {ANDROID_CLIENT_ID, EXPO_CLIENT_ID, REDIRECT_URI} from '@env';
 
 export const AuthContext = createContext();
 
@@ -17,9 +18,9 @@ const AuthProvider = ({children}) => {
   }, []);
 
   const [request, response] = Google.useAuthRequest({
-    androidClientId: '278015890123-n1kmm160pasl41dafp8mg47m895i72do.apps.googleusercontent.com',
-    expoClientId: '278015890123-jmiduepfm1vfvqhnn4ggcusf4qheqe21.apps.googleusercontent.com',
-    redirectUri: 'https://auth.expo.io/@ivanstatkevich/manage-my-time',
+    androidClientId: ANDROID_CLIENT_ID,
+    expoClientId: EXPO_CLIENT_ID,
+    redirectUri: REDIRECT_URI,
     useProxy: true
   });
 
@@ -34,7 +35,7 @@ const AuthProvider = ({children}) => {
   };
 
   const signIn = userParams => {
-    services.authServices.signIn({...userParams, push_notification_token: "test"}).then(res => {
+    services.authServices.signIn({...userParams, push_notification_token: "Auth"}).then(res => {
       putUser(res.data);
     });
   }
